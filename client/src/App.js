@@ -1,11 +1,11 @@
 import "./App.css";
+import Social from "./Social";
 import Test from "./Test";
 
 function App() {
   return (
     <div className="App">
-      {/* TESTING */}
-      <Test />
+      <Social />
     </div>
   );
 }

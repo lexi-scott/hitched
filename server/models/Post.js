@@ -1,35 +1,47 @@
-const { Schema, model } = require('mongoose');
-
-const postSchema = new Schema(
-  {
-    postId: {
-      type: Number,
-      required: true,
-      unique: true,
-    },
-    author: User,
-    content: {
-        type: String
-    },
-    comments: [
-        {
-          commentText: {
-            type: String,
-            required: true,
-            minlength: 1,
-            maxlength: 280,
-          },
-          commentAuthor: User,
-          createdAt: {
-            type: Date,
-            default: Date.now,
-            get: (timestamp) => dateFormat(timestamp),
-          },
-        },
-      ]
+const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
+const postSchema = new Schema({
+  content: {
+    type: String,
+    required: "You need to leave a Post!",
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
   },
-);
+  //edited postAuthor
+  postAuthor: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 
-const Post = model('Post', postSchema);
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
+  },
+  comments: [
+    {
+      commentText: {
+        type: String,
+        required: true,
+        minlength: 1,
+        maxlength: 280,
+      },
+      //edited commentAuthor
+      commentAuthor: {
+        type: String,
+        required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+        get: (timestamp) => dateFormat(timestamp),
+      },
+    },
+  ],
+});
+
+const Post = model("Post", postSchema);
 
 module.exports = Post;
