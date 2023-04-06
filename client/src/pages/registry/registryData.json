@@ -1,0 +1,39 @@
+[
+  {
+    "title": "Bali Villa",
+    "image": "./projectImages/pms.png",
+    "description": "I made this pms tracking web application from scratch. From bootstrap, CSS, Javscript, Node, Sequelize, Handlebars, SQL. I designed it for myself to help me track my moods based on my cycle. It is a project I continue to work on and have many future development ideas. It already has a few users/testers as well!",
+    "github": "https://github.com/lexi-scott/pms-success",
+    "deployed": "https://pacific-tundra-79298.herokuapp.com/",
+    "bgcolor": "#dcb62d",
+    "id": "1"
+  },
+  {
+    "title": "Grand Canyon Camping",
+    "image": "./projectImages/herd.png",
+    "description": " This was a group project and the concept was my idea. It is a cattle tracking website that allows a user to input cattle information and it it tied to a ranch. I was responsible for overall vision, database development, Cattle input page, cattle search feature and the cattle models.",
+    "github": "https://github.com/lexi-scott/herd",
+    "deployed": "https://cattle-tracker.herokuapp.com/",
+    "bgcolor": "#bb4d48",
+    "id": "2"
+  },
+  {
+    "title": "Monaco Yacht",
+    "image": "./projectImages/social-media.png",
+    "description": "I built an API for a social network web application where users can share thoughts, react to friends' thoughts and create a friend list.",
+    "github": "https://github.com/lexi-scott/Social-Network-API",
+    "deployed": "https://github.com/lexi-scott/Social-Network-API",
+    "bgcolor": "#9f7b92",
+    "id": "3"
+  },
+  {
+    "title": "Online Registries",
+    "image": "./projectImages/social-media.png",
+    "technologies": "MongoDB | Node | Insomnia | Express.js",
+    "description": "I built an API for a social network web application where users can share thoughts, react to friends' thoughts and create a friend list.",
+    "github": "https://github.com/lexi-scott/Social-Network-API",
+    "deployed": "https://github.com/lexi-scott/Social-Network-API",
+    "bgcolor": "#9f7b92",
+    "id": "3"
+  }
+]
