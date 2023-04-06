@@ -28,7 +28,7 @@ const typeDefs = gql`
   type Comment {
     commentText: String! 
     commentAuthor: User
-    postID: Integer
+    postId: Integer
   }
 
 
@@ -50,7 +50,7 @@ const typeDefs = gql`
         response: Boolean!, guests: Integer!, children: Integer!, specialFood: String, foodAllergy: String): User
     addRegistryItem(registryItem: String): User
     addPost(postId: Integer!, author: User, content: String): User
-    addComment(commentText: String!, commentAuthor: User, postID: Integer): Post
+    addComment(commentText: String!, commentAuthor: User, postId: Integer): Post
   }
 `;
 
