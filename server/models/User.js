@@ -23,6 +23,7 @@ const userSchema = new Schema(
     },
     // set rsvp to be a data that adheres to the rsvpSchema
     rsvp: rsvpSchema,
+    //save registry item this user selected
     registryItem: {
         description: String
     }

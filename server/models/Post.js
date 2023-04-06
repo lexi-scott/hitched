@@ -1,5 +1,9 @@
 const { Schema, model } = require('mongoose');
 
+// import schema from Rsvp.js
+const commentSchema = require('./Comment');
+const User = require('./User');
+
 const postSchema = new Schema(
   {
     postId: {
@@ -11,22 +15,7 @@ const postSchema = new Schema(
     content: {
         type: String
     },
-    comments: [
-        {
-          commentText: {
-            type: String,
-            required: true,
-            minlength: 1,
-            maxlength: 280,
-          },
-          commentAuthor: User,
-          createdAt: {
-            type: Date,
-            default: Date.now,
-            get: (timestamp) => dateFormat(timestamp),
-          },
-        },
-      ]
+    comments: [commentSchema]    
   },
 );
 
