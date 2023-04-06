@@ -12,23 +12,23 @@ const typeDefs = gql`
 
   type Rsvp {
     response: Boolean!
-    guests: Integer!
-    children: Integer!
+    guests: Int!
+    children: Int!
     specialFood: String
     foodAllergy: String
   }
 
   type Post {
-    postId: Integer!
-    author: User
+    postId: Int!
+    author: String
     content: String
-    comments: [comment] 
+    comments: [Comment] 
   }
 
   type Comment {
     commentText: String! 
-    commentAuthor: User
-    postId: Integer
+    author: String
+    postId: Int
   }
 
 
@@ -45,12 +45,12 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    saveRsvp(response: Boolean!, guests: Integer!, children: Integer!, specialFood: String, foodAllergy: String): User
+    saveRsvp(response: Boolean!, guests: Int!, children: Int!, specialFood: String, foodAllergy: String): User
     changeRsvp(
-        response: Boolean!, guests: Integer!, children: Integer!, specialFood: String, foodAllergy: String): User
+        response: Boolean!, guests: Int!, children:Int!, specialFood: String, foodAllergy: String): User
     addRegistryItem(registryItem: String): User
-    addPost(postId: Integer!, author: User, content: String): User
-    addComment(commentText: String!, commentAuthor: User, postId: Integer): Post
+    addPost(postId: Int!, author: String, content: String): User
+    addComment(commentText: String!, author: String, postId: Int): Post
   }
 `;
 

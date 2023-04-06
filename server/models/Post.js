@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 // import schema from Rsvp.js
 const commentSchema = require('./Comment');
-const User = require('./User');
+//import {User} from require('./User');
 
 const postSchema = new Schema(
   {
@@ -11,7 +11,7 @@ const postSchema = new Schema(
       required: true,
       unique: true,
     },
-    author: User,
+    author: String,
     content: {
         type: String
     },
