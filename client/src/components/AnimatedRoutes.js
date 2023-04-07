@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Landing from "../pages/landing/Landing";
 import About from "../pages/about/About";
 import Portfolio from "../pages/registry/Portfolio";
-import Contact from "../pages/rsvp/Contact";
+import Rsvp from "../pages/rsvp/Rsvp";
 
 const AnimatedRoutes = ({ personalDetails }) => {
   const location = useLocation();
@@ -23,7 +23,7 @@ const AnimatedRoutes = ({ personalDetails }) => {
           />
         }
       />
-      <Route path="/rsvp" element={<Contact />} />
+      <Route path="/rsvp" element={<Rsvp />} />
       <Route path="/registry" element={<Portfolio />} />
       <Route
         path="/social"

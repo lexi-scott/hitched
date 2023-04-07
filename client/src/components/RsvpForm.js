@@ -2,7 +2,7 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const Form = () => {
+const RsvpForm = () => {
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -121,4 +121,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default RsvpForm;
