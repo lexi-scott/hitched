@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
 
-
 @font-face {
   font-family: rubik;
   src: url(./fonts/Rubik-Regular.ttf);
@@ -64,7 +63,7 @@ body {
 }
 
 .description {
-  color: var(--hover-color)
+  color: var(--hover-color);
 }
 
 .pageDescription {

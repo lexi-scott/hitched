@@ -1,8 +1,9 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
+const Post = require("./Post");
 
 // import schema from Rsvp.js
-const rsvpSchema = require('./Rsvp');
+const rsvpSchema = require("./Rsvp");
 
 const userSchema = new Schema(
   {
@@ -15,7 +16,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: [/.+@.+\..+/, 'Must use a valid email address'],
+      match: [/.+@.+\..+/, "Must use a valid email address"],
     },
     password: {
       type: String,
@@ -25,8 +26,15 @@ const userSchema = new Schema(
     rsvp: rsvpSchema,
     //save registry item this user selected
     registryItem: {
-        description: String
-    }
+      description: String,
+    },
+    //Added posts array
+    posts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
   },
   // set this to use virtual below
   {
@@ -37,8 +45,8 @@ const userSchema = new Schema(
 );
 
 // hash user password
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
@@ -56,6 +64,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
 //   return this.savedBooks.length;
 // });
 
-const User = model('User', userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

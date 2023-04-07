@@ -1,13 +1,21 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
     _id: ID
-    username: String!
-    email: String!
-    password: String!
-    rsvp: Rsvp
+    username: String
+    email: String
+    posts: [Post]
     registryItem: String
+    rsvp: Rsvp
+  }
+
+  type Post {
+    _id: ID
+    content: String
+    postAuthor: String
+    createdAt: String
+    comments: [Comment]
   }
 
   type Rsvp {
@@ -18,19 +26,12 @@ const typeDefs = gql`
     foodAllergy: String
   }
 
-  type Post {
-    postId: Int!
-    author: String
-    content: String
-    comments: [Comment] 
-  }
-
   type Comment {
-    commentText: String! 
-    author: String
-    postId: Int
+    _id: ID
+    commentText: String
+    commentAuthor: String
+    createdAt: String
   }
-
 
   type Auth {
     token: ID!
@@ -38,19 +39,33 @@ const typeDefs = gql`
   }
 
   type Query {
+    users: [User]!
     user(username: String!): User
+    posts(userId: ID!): User
+    post(postId: ID!): Post
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    saveRsvp(response: Boolean!, guests: Int!, children: Int!, specialFood: String, foodAllergy: String): User
+    addPost(content: String!, postAuthor: String!): Post
+    addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
+    saveRsvp(
+      response: Boolean!
+      guests: Int!
+      children: Int!
+      specialFood: String
+      foodAllergy: String
+    ): User
     changeRsvp(
-        response: Boolean!, guests: Int!, children:Int!, specialFood: String, foodAllergy: String): User
+      response: Boolean!
+      guests: Int!
+      children: Int!
+      specialFood: String
+      foodAllergy: String
+    ): User
     addRegistryItem(registryItem: String): User
-    addPost(postId: Int!, author: String, content: String): User
-    addComment(commentText: String!, author: String, postId: Int): Post
   }
 `;
 
