@@ -1,54 +1,22 @@
-import "./App.css";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import Header from "./components/Header/Header";
-import Social from "./Social";
-import Login from "./Login";
-
-const httpLink = createHttpLink({
-  uri: "/graphql",
-});
-
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem("id_token");
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : "",
-    },
-  };
-});
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
-
-console.log(client);
+import Header from "./components/Header";
+import AnimatedRoutes from "./components/AnimatedRoutes";
 
 function App() {
+  const personalDetails = {
+    name: "Dave & Buster",
+    location: "Napa, CA",
+    tagline: "Say Yes on October 10, 2023",
+    email: "daveandbustermarried@mail.com",
+    availability: "Save the Date!",
+    brand:
+      "We met at Subway and fell in love because the worker said they were out of mayo and both of us got so angy we decided we should spend our lives together being miserable!!",
+  };
+
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Social />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </div>
-        </div>
-      </Router>
-    </ApolloProvider>
+    <>
+      <Header />
+      <AnimatedRoutes personalDetails={personalDetails} />
+    </>
   );
 }
 

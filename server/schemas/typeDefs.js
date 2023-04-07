@@ -41,6 +41,23 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addPost(content: String!, postAuthor: String!): Post
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
+    saveRsvp(
+      response: Boolean!
+      guests: Int!
+      children: Int!
+      specialFood: String
+      foodAllergy: String
+    ): User
+    changeRsvp(
+      response: Boolean!
+      guests: Int!
+      children: Int!
+      specialFood: String
+      foodAllergy: String
+    ): User
+    addRegistryItem(registryItem: String): User
+    addPost(postId: Int!, author: String, content: String): User
+    addComment(commentText: String!, author: String, postId: Int): Post
   }
 `;
 
