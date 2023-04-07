@@ -1,19 +1,19 @@
 import PageHeader from "../../components/PageHeader";
 import SocialIcons from "../../components/SocialIcons";
-import Form from "../../components/Form";
-import ContactInfo from "../../components/ContactInfo";
+import RsvpForm from "../../components/RsvpForm";
+import RsvpInfo from "../../components/RsvpInfo";
 
-const Contact = ({ name, email, location }) => {
+const Rsvp = ({ name, email, location }) => {
   return (
     <section className="contact">
       <PageHeader title="Contact" description="Let's Connect" />
       <div className="contactWrap container">
         <div className="row">
           <div className="col-12 col-lg-6">
-            <Form />
+            <RsvpForm />
           </div>
           <div className="col-12 col-lg-6">
-            <ContactInfo name="Lexi Scott" location={location} email={email} />
+            <RsvpInfo name="Lexi Scott" location={location} email={email} />
           </div>
         </div>
       </div>
@@ -22,4 +22,4 @@ const Contact = ({ name, email, location }) => {
   );
 };
 
-export default Contact;
+export default Rsvp;

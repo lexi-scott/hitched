@@ -1,7 +1,7 @@
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
-const ContactInfo = ({ name, email, location }) => {
+const RsvpInfo = ({ name, email, location }) => {
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -57,4 +57,4 @@ const ContactInfo = ({ name, email, location }) => {
   );
 };
 
-export default ContactInfo;
+export default RsvpInfo;
