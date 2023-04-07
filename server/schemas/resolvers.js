@@ -45,12 +45,12 @@ const resolvers = {
         },
 
         //saveRsvp will return user
-        saveRsvp: async (parent, { response, guests, children, specialFoo: String, foodAllergy }) => {
+        saveRsvp: async (parent, { response, guests, children, specialFood, foodAllergy }) => {
 
         },
 
         //changeRsvp will return user
-        changeRsvp: async (parent, { response, guests, children, specialFoo: String, foodAllergy }) => {
+        changeRsvp: async (parent, { response, guests, children, specialFood, foodAllergy }) => {
 
         },
 

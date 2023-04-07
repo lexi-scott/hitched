@@ -61,7 +61,7 @@ mutation AddRegistryItem(registryItem: String) {
 
 export const ADD_POST = gql`
  mutation AddPost(postId: Int!, author: String, content: String){
-    AddPost(postId: $postId, author: $author, content: $content){
+    addPost(postId: $postId, author: $author, content: $content){
         username
     }
  }
