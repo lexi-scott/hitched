@@ -1,9 +1,10 @@
-import NavLinks from "./NavLinks";
+import { Link } from "react-router-dom";
+// import NavLinks from "./NavLinks";
 
 const Header = () => {
   return (
     <header className="header">
-      <NavLinks />
+      <Link to="/">Click here to Social</Link>
     </header>
   );
 };
