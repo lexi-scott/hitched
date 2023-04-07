@@ -77,22 +77,22 @@ const resolvers = {
 
       return { token, user };
     },
+    //saveRsvp will return user
+    saveRsvp: async (
+      parent,
+      { response, guests, children, specialFood, foodAllergy },
+      context
+    ) => {},
+
+    //changeRsvp will return user
+    changeRsvp: async (
+      parent,
+      { response, guests, children, specialFood, foodAllergy }
+    ) => {},
+
+    //addRegistryItem will return user
+    addRegistryItem: async (parent, { registryItem }) => {},
   },
-
-  //saveRsvp will return user
-  saveRsvp: async (
-    parent,
-    { response, guests, children, specialFoo: String, foodAllergy }
-  ) => {},
-
-  //changeRsvp will return user
-  changeRsvp: async (
-    parent,
-    { response, guests, children, specialFoo: String, foodAllergy }
-  ) => {},
-
-  //addRegistryItem will return user
-  addRegistryItem: async (parent, { registryItem }) => {},
 };
 
 module.exports = resolvers;

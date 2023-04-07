@@ -5,7 +5,9 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    posts: [Post]!
+    posts: [Post]
+    registryItem: String
+    rsvp: Rsvp
   }
 
   type Post {
@@ -14,6 +16,14 @@ const typeDefs = gql`
     postAuthor: String
     createdAt: String
     comments: [Comment]
+  }
+
+  type Rsvp {
+    response: Boolean!
+    guests: Int!
+    children: Int!
+    specialFood: String
+    foodAllergy: String
   }
 
   type Comment {
@@ -56,8 +66,6 @@ const typeDefs = gql`
       foodAllergy: String
     ): User
     addRegistryItem(registryItem: String): User
-    addPost(postId: Int!, author: String, content: String): User
-    addComment(commentText: String!, author: String, postId: Int): Post
   }
 `;
 
