@@ -1,29 +1,27 @@
 import React from "react";
 import { useState } from "react";
-import { useMutation, useQuery } from "@apollo/client";
+// import { useMutation, useQuery } from "@apollo/client";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { QUERY_USERS } from "./utils/queries";
-import { ADD_POST } from "./utils/mutations";
-
-import auth from "./utils/auth";
+// import { QUERY_USERS } from "../../utils/queries";
+// import { ADD_POST } from "../../utils/mutations";
 const users = [
   {
     name: "Deorren",
-    comment: "Test Comment ",
+    postContent: "Test Comment ",
   },
   {
     name: "Rima",
-    comment: "Test Comment 2",
+    postContent: "Test Comment 2",
   },
   {
     name: "Adana",
-    comment: "Test Comment 3",
+    postContent: "Test Comment 3",
   },
   {
     name: "Lexi",
-    comment: "Test Comment 4",
+    postContent: "Test Comment 4",
   },
 ];
 
@@ -32,43 +30,67 @@ export default function Social() {
 
   // const test = data?.users || [];
   // console.log(test);
-  const [post, setPost] = useState("");
+  const [post, setPost] = useState({
+    name: "",
+    postContent: "",
+  });
 
-  const [addPost, { error }] = useMutation(ADD_POST);
-
-  const handleChange = (e) => {
-    setPost(e.target.value);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setPost({
+      ...post,
+      [name]: value,
+    });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const userId = auth.getProfile().data.id;
-    try {
-      const data = await addPost({
-        variables: { userId, post },
-      });
+    users.push(post);
 
-      setPost("");
-
-      console.log("Post created successfully");
-    } catch (err) {
-      console.error(err);
-    }
+    console.log(users);
   };
 
-  if (error) console.error(error);
+  // const [addPost, { error }] = useMutation(ADD_POST);
+
+  // const handleChange = (e) => {
+  //   setPost(e.target.value);
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const userId = auth.getProfile().data.id;
+  //   try {
+  //     const data = await addPost({
+  //       variables: { userId, post },
+  //     });
+
+  //     setPost("");
+
+  //     console.log("Post created successfully");
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <div className="container-fluid w-75 social-page d-flex flex-column ">
-      <h1>Social Page</h1>
       <div className="user-inputs d-flex">
         <InputGroup className="mb-3">
           <Form.Control
+            placeholder="Whats your name?"
+            aria-label="post"
+            aria-describedby="basic-addon2"
+            name="name"
+            onChange={handleChange}
+          />
+          <Form.Control
+            name="postContent"
             placeholder="Whats on your mind..."
             aria-label="post"
             aria-describedby="basic-addon2"
             onChange={handleChange}
           />
+
           <Button
             variant="outline-primary"
             id="button-addon1"
@@ -85,7 +107,7 @@ export default function Social() {
               <li class="list-group-item">
                 <>{user.name}</>
                 <br />
-                <>{user.comment}</>
+                <>{user.postContent}</>
               </li>
             );
           })}

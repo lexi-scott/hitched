@@ -4,10 +4,20 @@ const Post = require("../models/Post");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
-    Query: {
-        users: async () => {
-            return User.find().populate("posts");
-        },
+  Query: {
+    users: async () => {
+      return User.find().populate("posts");
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username: username }).populate("posts");
+    },
+    posts: async (parent, { userId }) => {
+      return User.findOne({ _id: userId }, { posts: 1 }).populate("posts");
+    },
+
+    post: async (parent, { postId }) => {
+      return Post.findOne({ _id: postId });
+    },
 
         me: async (parent, args, context) => {
             console.log(context);
