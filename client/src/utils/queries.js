@@ -13,20 +13,20 @@ export const QUERY_USER = gql`
 `;
 
 export const GET_ME = gql`
-query Me {
-  me {
-    _id
-    username
-    email
-    bookCount
-    rsvp
-    reguitryItem
+  query Me {
+    me {
+      _id
+      username
+      email
+      bookCount
+      rsvp
+      reguitryItem
+    }
   }
-}
 `;
 
-export const QUERY_RSVP = gql `
-query allrsvps {
+export const QUERY_RSVP = gql`
+  query allrsvps {
     rsvps {
       _id
       guests
@@ -38,12 +38,17 @@ query allrsvps {
 `;
 
 export const QUERY_USERS = gql`
-  query allUsers {
+  {
     users {
       _id
       username
       email
-      posts
+      posts {
+        _id
+        content
+        postAuthor
+        createdAt
+      }
     }
   }
 `;

@@ -81,7 +81,23 @@ const resolvers = {
       parent,
       { response, guests, children, specialFood, foodAllergy },
       context
-    ) => {},
+    ) => {
+      const newRsvp = {
+        response,
+        guests,
+        children,
+        specialFood,
+        foodAllergy,
+      };
+
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $set: { rsvp: newRsvp } },
+        { new: true }
+      );
+
+      return newRsvp;
+    },
 
     //changeRsvp will return user
     changeRsvp: async (
@@ -90,7 +106,14 @@ const resolvers = {
     ) => {},
 
     //addRegistryItem will return user
-    addRegistryItem: async (parent, { registryItem }) => {},
+    addRegistryItem: async (parent, { registryItem }, context) => {
+      const regItem = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $set: { registryItem } },
+        { new: true }
+      );
+      return regItem;
+    },
   },
 };
 
