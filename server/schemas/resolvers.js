@@ -65,7 +65,7 @@ const resolvers = {
         },
 
         //addComment will return post
-        addComment: async (parent, { commentText, commentAuthor, postId}) => {
+        addComment: async (parent, { commentText, author, postId}) => {
 
         }
 
