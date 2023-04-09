@@ -1,0 +1,12 @@
+.social-cards {
+  height: 20rem;
+}
+
+.card-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+  height: 20rem;
+}

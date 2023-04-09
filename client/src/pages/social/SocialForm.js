@@ -55,11 +55,13 @@ export default function SocialForm() {
 
   //IMAGE UPLOADING
   const [images, setImages] = useState([]);
-  const maxNumber = 69;
+  const maxNumber = 1000;
+  const maxSize = 100000000;
 
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit
     console.log(imageList, addUpdateIndex);
+
     setImages(imageList);
   };
 
@@ -71,7 +73,7 @@ export default function SocialForm() {
         New Post
       </Button>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>What's on your mind?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -92,6 +94,7 @@ export default function SocialForm() {
             value={images}
             onChange={onChange}
             maxNumber={maxNumber}
+            maxFileSize={maxSize}
             dataURLKey="data_url"
           >
             {({
@@ -105,25 +108,29 @@ export default function SocialForm() {
             }) => (
               // write your building UI
               <div className="upload__image-wrapper">
-                <button
+                <Button
                   style={isDragging ? { color: "red" } : undefined}
                   onClick={onImageUpload}
                   {...dragProps}
                 >
                   Click or Drop here
-                </button>
+                </Button>
                 &nbsp;
-                <button onClick={onImageRemoveAll}>Remove all images</button>
+                <Button onClick={onImageRemoveAll}>Remove all images</Button>
                 {imageList.map((image, index) => (
                   <div key={index} className="image-item">
-                    <img src={image["data_url"]} alt="" width="100" />
+                    <img
+                      src={image["data_url"]}
+                      alt=""
+                      style={{ width: "50%", margin: "auto" }}
+                    />
                     <div className="image-item__btn-wrapper">
-                      <button onClick={() => onImageUpdate(index)}>
+                      <Button onClick={() => onImageUpdate(index)}>
                         Update
-                      </button>
-                      <button onClick={() => onImageRemove(index)}>
+                      </Button>
+                      <Button onClick={() => onImageRemove(index)}>
                         Remove
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 ))}

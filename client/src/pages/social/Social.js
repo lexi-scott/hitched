@@ -21,7 +21,7 @@ export default function Social() {
 
   return (
     <div className="container-fluid w-75 social-page d-flex flex-column ">
-      <div className="user-inputs d-flex">
+      <div className="d-flex mb-3">
         <SocialForm />
       </div>
       <div className="posts-container d-flex flex-column">
@@ -31,20 +31,30 @@ export default function Social() {
           <CardColumns>
             {postData.map((post) => {
               return (
-                <Card key={post._id} border="dark">
+                <Card
+                  key={post._id}
+                  border="dark"
+                  className="d-flex mb-3 flex-row w-80 social-cards"
+                >
                   {post.image ? (
-                    <Card.Img
-                      src={post.image}
-                      variant="top"
-                      style={{ width: "12rem" }}
-                    />
+                    <div className="card-image">
+                      <Card.Img
+                        src={post.image}
+                        style={{ width: "17rem", height: "18rem" }}
+                      />
+                    </div>
                   ) : null}
                   <Card.Body>
                     <Card.Title>{post.postAuthor}</Card.Title>
                     <Card.Text>{post.content}</Card.Text>
                     <Card.Text>{post.createdAt}</Card.Text>
-                    <Button className="btn-block btn-danger">Comment</Button>
+                    <Button className="btn-block btn-danger">
+                      Add Comment
+                    </Button>
                   </Card.Body>
+                  <div>
+                    <h1>Comments here</h1>
+                  </div>
                 </Card>
               );
             })}
