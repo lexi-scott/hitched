@@ -3,17 +3,27 @@ import SocialIcons from "../../components/SocialIcons";
 import RsvpForm from "../../components/RsvpForm";
 import RsvpInfo from "../../components/RsvpInfo";
 
-const Rsvp = ({ name, email, location }) => {
+import { useQuery } from '@apollo/client';
+
+import { QUERY_ME } from '../../utils/queries';
+
+
+const Rsvp = () => {
+
+  const { data } = useQuery(QUERY_ME);
+
+  const userData = data?.me || data?.User || {};
+
   return (
     <section className="contact">
-      <PageHeader title="Contact" description="Let's Connect" />
+      <PageHeader title="RSVP" description="Let's Connect" />
       <div className="contactWrap container">
         <div className="row">
           <div className="col-12 col-lg-6">
             <RsvpForm />
           </div>
           <div className="col-12 col-lg-6">
-            <RsvpInfo name="Lexi Scott" location={location} email={email} />
+            <RsvpInfo name={userData.username} email={userData.email} rsvp={userData.rsvp} />
           </div>
         </div>
       </div>
