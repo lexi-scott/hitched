@@ -48,18 +48,8 @@ export const QUERY_USERS = gql`
         content
         postAuthor
         createdAt
+        image
       }
-    }
-  }
-`;
-
-export const QUERY_SINGLE_USER = gql`
-  query singleUser($username: String!) {
-    user(username: $username) {
-      _id
-      username
-      email
-      posts
     }
   }
 `;
@@ -71,6 +61,18 @@ export const QUERY_ME = gql`
       username
       email
       posts
+    }
+  }
+`;
+
+export const QUERY_POSTS = gql`
+  {
+    posts {
+      _id
+      postAuthor
+      content
+      image
+      createdAt
     }
   }
 `;

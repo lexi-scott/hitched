@@ -1,88 +1,55 @@
 import React from "react";
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
+import CardColumns from "react-bootstrap/CardColumns";
+import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import { QUERY_USERS } from "../../utils/queries";
-// import { ADD_POST } from "../../utils/mutations";
-const users = [
-  {
-    name: "Deorren",
-    postContent: "Test Comment ",
-  },
-  {
-    name: "Rima",
-    postContent: "Test Comment 2",
-  },
-  {
-    name: "Adana",
-    postContent: "Test Comment 3",
-  },
-  {
-    name: "Lexi",
-    postContent: "Test Comment 4",
-  },
-];
+
+import { QUERY_POSTS } from "../../utils/queries";
+import SocialForm from "./SocialForm";
 
 export default function Social() {
-  const { data, loading, error } = useQuery(QUERY_USERS);
+  const { data, loading, error } = useQuery(QUERY_POSTS);
+  //GETTING ALL THE DATA FROM POST
+  const postData = data?.posts || [];
 
-  const test = data?.users || [];
-  console.log(data);
-  const [post, setPost] = useState({
-    name: "",
-    postContent: "",
-  });
+  if (loading) return <h1>Loading...</h1>;
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setPost({
-      ...post,
-      [name]: value,
-    });
-  };
+  if (error) console.error(error);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    users.push(post);
-
-    console.log(users);
-  };
+  console.log(postData);
 
   return (
     <div className="container-fluid w-75 social-page d-flex flex-column ">
       <div className="user-inputs d-flex">
-        <InputGroup className="mb-3">
-          <Form.Control
-            name="postContent"
-            placeholder="Whats on your mind..."
-            aria-label="post"
-            aria-describedby="basic-addon2"
-            onChange={handleChange}
-          />
-
-          <Button
-            variant="outline-primary"
-            id="button-addon1"
-            onClick={handleSubmit}
-          >
-            Send Post
-          </Button>
-        </InputGroup>
+        <SocialForm />
       </div>
       <div className="posts-container d-flex flex-column">
-        <ul class="list-group list-group-flush">
-          {users.map((user) => {
-            return (
-              <li class="list-group-item">
-                <>{user.name}</>
-                <br />
-                <>{user.postContent}</>
-              </li>
-            );
-          })}
-        </ul>
+        {postData.length === 0 ? (
+          <h1 style={{ color: "white" }}>Looks empty in here...</h1>
+        ) : (
+          <CardColumns>
+            {postData.map((post) => {
+              return (
+                <Card key={post._id} border="dark">
+                  {post.image ? (
+                    <Card.Img
+                      src={post.image}
+                      variant="top"
+                      style={{ width: "12rem" }}
+                    />
+                  ) : null}
+                  <Card.Body>
+                    <Card.Title>{post.postAuthor}</Card.Title>
+                    <Card.Text>{post.content}</Card.Text>
+                    <Card.Text>{post.createdAt}</Card.Text>
+                    <Button className="btn-block btn-danger">Comment</Button>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+          </CardColumns>
+        )}
       </div>
     </div>
   );

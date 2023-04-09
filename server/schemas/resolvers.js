@@ -11,8 +11,8 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username: username }).populate("posts");
     },
-    posts: async (parent, { userId }) => {
-      return User.findOne({ _id: userId }, { posts: 1 }).populate("posts");
+    posts: async () => {
+      return Post.find();
     },
 
     post: async (parent, { postId }) => {
@@ -36,8 +36,8 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPost: async (parent, { content, postAuthor }) => {
-      const newPost = await Post.create({ content, postAuthor });
+    addPost: async (parent, { content, postAuthor, image }) => {
+      const newPost = await Post.create({ content, postAuthor, image });
 
       await User.findOneAndUpdate(
         { username: postAuthor },

@@ -24,52 +24,54 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_RSVP = gql`
-mutation SaveRsvp(response: Boolean!, guests: Int!, children: Int!, specialFood: String, foodAllergy: String) {
-    saveRsvp(response: $response, guests: $guests, children: $chilren, specialFood: $specialFood, foodAllergy: $foodAllergy){
-        _id
-        guests
-        children
-        specialFood
-        foodAllergy
-        username
-    }
-}
-`;
+// export const SAVE_RSVP = gql`
+// mutation SaveRsvp(response: Boolean!, guests: Int!, children: Int!, specialFood: String, foodAllergy: String) {
+//     saveRsvp(response: $response, guests: $guests, children: $chilren, specialFood: $specialFood, foodAllergy: $foodAllergy){
+//         _id
+//         guests
+//         children
+//         specialFood
+//         foodAllergy
+//         username
+//     }
+// }
+// `;
 
-export const CHANGE_RSVP = gql`
-mutation ChangeRsvp(response: Boolean!, guests: Int!, children: Int!, specialFood: String, foodAllergy: String) {
-    changeRsvp(response: $response, guests: $guests, children: $chilren, specialFood: $specialFood, foodAllergy: $foodAllergy){
-        _id
-        guests
-        children
-        specialFood
-        foodAllergy
-        username
-    }
-}
-`;
+// export const CHANGE_RSVP = gql`
+// mutation ChangeRsvp(response: Boolean!, guests: Int!, children: Int!, specialFood: String, foodAllergy: String) {
+//     changeRsvp(response: $response, guests: $guests, children: $chilren, specialFood: $specialFood, foodAllergy: $foodAllergy){
+//         _id
+//         guests
+//         children
+//         specialFood
+//         foodAllergy
+//         username
+//     }
+// }
+// `;
 
-export const ADD_REGISTRY_ITEM = gql`
-mutation AddRegistryItem(registryItem: String) {
-    addRegistryItem(registryItem: $registryItem){
-        username
-    }
-}
-`;
+// export const ADD_REGISTRY_ITEM = gql`
+// mutation AddRegistryItem(registryItem: String) {
+//     addRegistryItem(registryItem: $registryItem){
+//         username
+//     }
+// }
+// `;
 
 export const ADD_POST = gql`
- mutation AddPost(postId: Int!, author: String, content: String){
-    addPost(postId: $postId, author: $author, content: $content){
-        username
+  mutation addPost($postAuthor: String!, $content: String!, $image: String!) {
+    addPost(postAuthor: $postAuthor, content: $content, image: $image) {
+      content
+      postAuthor
+      image
     }
- }
- `;
+  }
+`;
 
-export const ADD_COMMENT = gql`
- mutation Addcomment(commentText: String!, author: String, postId: Int){
-    addComment(commentText: $commentText, author: $author, postId: $postId){
+// export const ADD_COMMENT = gql`
+//  mutation Addcomment(commentText: String!, author: String, postId: Int){
+//     addComment(commentText: $commentText, author: $author, postId: $postId){
 
- }
- }
- `;
+//  }
+//  }
+//  `;

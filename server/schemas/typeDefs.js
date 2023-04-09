@@ -15,6 +15,7 @@ const typeDefs = gql`
     content: String
     postAuthor: String
     createdAt: String
+    image: String
     comments: [Comment]
   }
 
@@ -41,7 +42,7 @@ const typeDefs = gql`
   type Query {
     users: [User]!
     user(username: String!): User
-    posts(userId: ID!): User
+    posts: [Post]
     post(postId: ID!): Post
     me: User
   }
@@ -49,7 +50,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(content: String!, postAuthor: String!): Post
+    addPost(content: String!, postAuthor: String!, image: String!): Post
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
     saveRsvp(
       response: Boolean!
