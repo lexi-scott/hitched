@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -12,22 +12,9 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
-      token
-      user {
-        _id
-        username
-      }
-    }
-  }
-`;
-
 export const SAVE_RSVP = gql`
 mutation SaveRsvp($response: Boolean!, $guests: Int!, $children: Int!, $specialFood: String, $foodAllergy: String) {
   saveRsvp(response: $response, guests: $guests, children: $children, specialFood: $specialFood, foodAllergy: $foodAllergy) {
-    _id
     email
     username
   }
@@ -60,7 +47,7 @@ export const ADD_POST = gql`
  }
  `;
 
-export const ADD_COMMENT = gql`
+ export const ADD_COMMENT = gql`
  mutation Addcomment($commentText: String!, $author: String, $postId: Int){
     addComment(commentText: $commentText, author: $author, postId: $postId){
 

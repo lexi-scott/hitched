@@ -2,7 +2,9 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useMutation } from '@apollo/client';
-//import { SAVE_RSVP} from '../utils/mutations';
+import { SAVE_RSVP} from '../utils/mutations';
+
+import Auth from '../utils/auth';
 //import { fieldNameFromStoreName } from "@apollo/client/cache";
 
 
@@ -39,7 +41,7 @@ const RsvpForm = () => {
   const [numChildren, setNumChildren] = useState(0);
   const [guestSpecialFood, setGuestSpecialFood] = useState("");
   const [guestFoodAllergy, setGuestFoodAllergy] = useState("");
-  //const [saveRsvp] = useMutation(SAVE_RSVP);
+  const [saveRsvp] = useMutation(SAVE_RSVP);
 
 
   const [ref, inView] = useInView({
@@ -122,12 +124,27 @@ const RsvpForm = () => {
   }
 
   //submit button
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     console.log("IN SUBMIT", guestResponse, numGuests, numChildren, guestSpecialFood, guestFoodAllergy);
 
-   
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+
+      const { data } = await saveRsvp({
+        variables: { guestResponse, numGuests, numChildren, guestSpecialFood, guestFoodAllergy },
+      });
+
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

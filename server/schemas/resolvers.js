@@ -80,7 +80,22 @@ const resolvers = {
             parent,
             { response, guests, children, specialFood, foodAllergy },
             context
-        ) => { },
+        ) => {
+            console.log("IN SERVER savePRVP 1");
+        console.log("IN SERVER savePRVP",response, guests, children, specialFood, foodAllergy );
+        if (context.user) {
+
+
+            const user =  await User.findOneAndUpdate(
+               { _id: context.user._id },
+               { $add: { rsvp: {response, guests, children, specialFood, foodAllergy} } },
+               { new: true, runValidators: true }
+             );
+     
+             return user;
+           }
+           throw new AuthenticationError('You need to be logged in!'); 
+    },
 
         //changeRsvp will return user
         changeRsvp: async (
