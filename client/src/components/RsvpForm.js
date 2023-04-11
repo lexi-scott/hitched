@@ -130,11 +130,11 @@ const RsvpForm = () => {
     console.log("IN SUBMIT", guestResponse, numGuests, numChildren, guestSpecialFood, guestFoodAllergy);
 
     // get token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (!token) {
-      return false;
-    }
+    // if (!token) {
+    //   return false;
+    // }
 
     try {
 
