@@ -3,10 +3,15 @@ import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import CardColumns from "react-bootstrap/CardColumns";
 import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/esm/Col";
+import ListGroup from "react-bootstrap/ListGroup";
 
 import { QUERY_POSTS } from "../../utils/queries";
 import SocialForm from "./SocialForm";
+import { AddComment } from "./AddComment";
 
 export default function Social() {
   const { data, loading, error } = useQuery(QUERY_POSTS);
@@ -28,37 +33,51 @@ export default function Social() {
         {postData.length === 0 ? (
           <h1 style={{ color: "white" }}>Looks empty in here...</h1>
         ) : (
-          <CardColumns>
+          <Row xs={1} md={2}>
             {postData.map((post) => {
               return (
-                <Card
-                  key={post._id}
-                  border="dark"
-                  className="d-flex mb-3 flex-row w-80 social-cards"
-                >
-                  {post.image ? (
-                    <div className="card-image">
-                      <Card.Img
-                        src={post.image}
-                        style={{ width: "17rem", height: "18rem" }}
-                      />
-                    </div>
-                  ) : null}
-                  <Card.Body>
-                    <Card.Title>{post.postAuthor}</Card.Title>
-                    <Card.Text>{post.content}</Card.Text>
-                    <Card.Text>{post.createdAt}</Card.Text>
-                    <Button className="btn-block btn-danger">
-                      Add Comment
-                    </Button>
-                  </Card.Body>
-                  <div>
-                    <h1>Comments here</h1>
-                  </div>
-                </Card>
+                <>
+                  <Col>
+                    <Card>
+                      {post.image ? (
+                        <Card.Img
+                          variant="top"
+                          src={post.image}
+                          className="post-image"
+                        />
+                      ) : null}
+
+                      <Card.Body>
+                        <Card.Title>{post.postAuthor}</Card.Title>
+                        <Card.Text>{post.content}</Card.Text>
+                        <Card.Text>{post.createdAt}</Card.Text>
+                        <Card.Text>Comments</Card.Text>
+                        <ListGroup
+                          variant="flush"
+                          className="g-4 overflow-auto"
+                          style={{ height: "12rem" }}
+                        >
+                          {post.comments.length === 0 ? (
+                            <Card.Text>"be the first to comment.."</Card.Text>
+                          ) : (
+                            post.comments.map((comment) => {
+                              return (
+                                <ListGroup.Item>
+                                  {comment.commentText} by{" "}
+                                  {comment.commentAuthor}
+                                </ListGroup.Item>
+                              );
+                            })
+                          )}
+                        </ListGroup>
+                        <AddComment postId={post._id} />
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </>
               );
             })}
-          </CardColumns>
+          </Row>
         )}
       </div>
     </div>

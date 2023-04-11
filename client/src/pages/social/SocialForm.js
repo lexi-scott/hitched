@@ -18,7 +18,7 @@ export default function SocialForm() {
   const [formPost, setFormPost] = useState({
     postAuthor: "",
     content: "",
-    image: "",
+    image: null,
   });
 
   const handlePostChange = (e) => {
@@ -36,10 +36,14 @@ export default function SocialForm() {
 
   const handleSubmit = async () => {
     console.log(formPost);
+    console.log(images[0]);
+
+    //IF THERES AN IMAGE PUT THE DATA, IF NOT SET NULL
+    const uploadImage = images[0] !== undefined ? images[0].data_url : null;
 
     try {
       const { data } = await addPost({
-        variables: { ...formPost, image: images[0]?.data_url },
+        variables: { ...formPost, image: uploadImage },
       });
       window.location.reload();
     } catch (err) {

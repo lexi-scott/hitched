@@ -59,7 +59,7 @@ export const ADD_USER = gql`
 // `;
 
 export const ADD_POST = gql`
-  mutation addPost($postAuthor: String!, $content: String!, $image: String!) {
+  mutation addPost($postAuthor: String!, $content: String!, $image: String) {
     addPost(postAuthor: $postAuthor, content: $content, image: $image) {
       content
       postAuthor
@@ -68,10 +68,21 @@ export const ADD_POST = gql`
   }
 `;
 
-// export const ADD_COMMENT = gql`
-//  mutation Addcomment(commentText: String!, author: String, postId: Int){
-//     addComment(commentText: $commentText, author: $author, postId: $postId){
-
-//  }
-//  }
-//  `;
+export const ADD_COMMENT = gql`
+  mutation addComment(
+    $commentText: String!
+    $commentAuthor: String!
+    $postId: String!
+  ) {
+    addComment(
+      postId: $postId
+      commentText: $commentText
+      commentAuthor: $commentAuthor
+    ) {
+      comments {
+        commentText
+        commentAuthor
+      }
+    }
+  }
+`;

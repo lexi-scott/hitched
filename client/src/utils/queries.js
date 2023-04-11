@@ -73,6 +73,10 @@ export const QUERY_POSTS = gql`
       content
       image
       createdAt
+      comments {
+        commentText
+        commentAuthor
+      }
     }
   }
 `;
