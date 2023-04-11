@@ -5,6 +5,7 @@ import SocialIcons from "../../components/SocialIcons";
 
 const Landing = ({ name, tagline }) => {
   const styles = {
+    
     landing: {
       height: "calc(100% - 93px)",
       display: "flex",
