@@ -2,8 +2,9 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import Landing from "../pages/landing/Landing";
 import About from "../pages/about/About";
-import Portfolio from "../pages/registry/Portfolio";
+import Registry from "../pages/registry/Registry";
 import Contact from "../pages/rsvp/Contact";
+import Social from "../pages/social/Social";
 
 const AnimatedRoutes = ({ personalDetails }) => {
   const location = useLocation();
@@ -24,10 +25,8 @@ const AnimatedRoutes = ({ personalDetails }) => {
         }
       />
       <Route path="/rsvp" element={<Contact />} />
-      <Route path="/registry" element={<Portfolio />} />
-      <Route
-        path="/social"
-      />
+      <Route path="/registry" element={<Registry />} />
+      <Route path="/social" element={<Social />}/>
     </Routes>
   );
 };

@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import closeModal from "../images/close.svg";
 
-const Project = ({ technologies, title, image, color, id, github, deployed, description }) => {
+const Gift = ({ experiences, gift, image, color, id, github, deployed, text }) => {
   const [ref, inView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
@@ -37,10 +37,10 @@ const Project = ({ technologies, title, image, color, id, github, deployed, desc
       >
         <div className="textWrap col-6 d-flex flex-column justify-content-center align-items-center m-5">
           <p className="tech">
-            <em>{technologies}</em>
+            <em>{experiences}</em>
           </p>
-          <h3 className="projectTitle">{title}</h3>
-          <span className="viewWork">Send Money &#8594;</span>
+          <h3 className="projectTitle">{gift}</h3>
+          <span className="viewWork">Sponsor this gift! &#8594;</span>
         </div>
         <div className="imageContainer col-6 d-flex align-items-center justify-content-center">
           <img src={image} alt="Laptop displaying application" />
@@ -68,8 +68,8 @@ const Project = ({ technologies, title, image, color, id, github, deployed, desc
         }}
       >
         <img src={closeModal} className="closeMenu closeModal" onClick={handleCloseModal} alt="Close"></img>
-        <h3 className="modalTitle">{title}</h3>
-        <p className="projectDescription">{description}</p>
+        <h3 className="modalTitle">{gift}</h3>
+        <p className="projectDescription">{text}</p>
         <button className="btn" onClick={() => (window.location.href = github)}>
           GitHub Repo
         </button>
@@ -81,4 +81,4 @@ const Project = ({ technologies, title, image, color, id, github, deployed, desc
   );
 };
 
-export default Project;
+export default Gift;
