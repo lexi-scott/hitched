@@ -2,7 +2,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import Landing from "../pages/landing/Landing";
 import About from "../pages/about/About";
-import Portfolio from "../pages/registry/Portfolio";
+import Registry from "../pages/registry/Registry";
 import Rsvp from "../pages/rsvp/Rsvp";
 import Social from "../pages/social/Social";
 
@@ -33,8 +33,8 @@ const AnimatedRoutes = ({ personalDetails }) => {
         }
       />
       <Route path="/rsvp" element={<Rsvp />} />
-      <Route path="/registry" element={<Portfolio />} />
-      <Route path="/social" element={<Social />} />
+      <Route path="/registry" element={<Registry />} />
+      <Route path="/social" element={<Social />}/>
     </Routes>
   );
 };
