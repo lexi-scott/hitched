@@ -30,8 +30,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { username, email}) => {
+      const user = await User.create({ username, email });
       console.log("server adduser ", user);
       const token = signToken(user);
       return { token, user };
@@ -65,11 +65,11 @@ const resolvers = {
         throw new AuthenticationError("No user found with this email address");
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      // const correctPw = await user.isCorrectPassword(password);
 
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
+      // if (!correctPw) {
+      //   throw new AuthenticationError("Incorrect credentials");
+      // }
 
       const token = signToken(user);
 

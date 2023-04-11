@@ -1,4 +1,4 @@
-import aboutMeImg from "../images/lexiUda.jpg";
+import aboutMeImg from "../images/aboutdavenbuster.jpeg";
 import { motion } from "framer-motion";
 import SocialIcons from "../components/SocialIcons";
 import { useInView } from "react-intersection-observer";
