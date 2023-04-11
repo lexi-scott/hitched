@@ -1,3 +1,11 @@
+import React from "react";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 // import Header from "./components/Header";
 // import Login from "./pages/login/login";
 // import AnimatedRoutes from "./components/AnimatedRoutes";

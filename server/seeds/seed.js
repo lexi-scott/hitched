@@ -26,7 +26,6 @@ connection.once('open', async () => {
 
 });
 
-// db.once('open', async () => {
 //     await User.deleteMany({});
 
 //     const users = await User.insertMany(userData);

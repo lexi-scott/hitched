@@ -5,7 +5,7 @@ import "./index.css";
 import "./pages/landing/landing.css";
 import "./pages/about/about.css";
 //import "./pages/portfolio/portfolio.css";
-import "./pages/rsvp/contact.css";
+import "./pages/rsvp/rsvp.css";
 
 import App from "./App";
 

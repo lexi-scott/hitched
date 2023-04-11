@@ -4,94 +4,117 @@ const Post = require("../models/Post");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
-  Query: {
-    users: async () => {
-      return User.find().populate("posts");
-    },
-
-    user: async (parent, { username }) => {
-      return User.findOne({ username: username }).populate("posts");
-    },
-    posts: async (parent, { userId }) => {
-      return User.findOne({ _id: userId }, { posts: 1 }).populate("posts");
-    },
-
-    post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId });
-    },
-
-    me: async (parent, args, context) => {
-      console.log(context);
-      if (context.user) {
-        console.log(context.user);
-        return User.findOne({ _id: context.user._id }).populate("posts"); //.populate('savedBooks');
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
-  },
-
-  Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      console.log("server adduser ", user);
-      const token = signToken(user);
-      return { token, user };
-    },
-    addPost: async (parent, { content, postAuthor }) => {
-      const newPost = await Post.create({ content, postAuthor });
-
-      await User.findOneAndUpdate(
-        { username: postAuthor },
-        { $addToSet: { posts: newPost._id } }
-      );
-
-      return newPost;
-    },
-    addComment: async (parent, { postId, commentText, commentAuthor }) => {
-      return Post.findOneAndUpdate(
-        { _id: postId },
-        {
-          $addToSet: { comments: { commentText, commentAuthor } },
+    Query: {
+        users: async () => {
+            return User.find().populate("posts");
         },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+        user: async (parent, { username }) => {
+            return User.findOne({ username: username }).populate("posts");
+        },
+        me: async (parent, args, context) => {
+            console.log(context);
+            if (context.user) {
+                console.log(context.user);
+                return User.findOne({ _id: context.user._id }).populate("posts"); //.populate('savedBooks');
+            }
+            throw new AuthenticationError("You need to be logged in!");
+        },
+        posts: async (parent, { userId }) => {
+            return User.findOne({ _id: userId }, { posts: 1 }).populate("posts");
+        },
+
+        post: async (parent, { postId }) => {
+            return Post.findOne({ _id: postId });
+        },
     },
 
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    Mutation: {
+        addUser: async (parent, { username, email, password }) => {
+            const user = await User.create({ username, email, password });
+            console.log("server adduser ", user);
+            const token = signToken(user);
+            return { token, user };
+        },
+        addPost: async (parent, { content, postAuthor }) => {
+            const newPost = await Post.create({ content, postAuthor });
 
-      if (!user) {
-        throw new AuthenticationError("No user found with this email address");
-      }
+            await User.findOneAndUpdate(
+                { username: postAuthor },
+                { $addToSet: { posts: newPost._id } }
+            );
 
-      const correctPw = await user.isCorrectPassword(password);
+            return newPost;
+        },
+        addComment: async (parent, { postId, commentText, commentAuthor }) => {
+            return Post.findOneAndUpdate(
+                { _id: postId },
+                {
+                    $addToSet: { comments: { commentText, commentAuthor } },
+                },
+                {
+                    new: true,
+                    runValidators: true,
+                }
+            );
+        },
 
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
 
-      const token = signToken(user);
+            if (!user) {
+                throw new AuthenticationError("No user found with this email address");
+            }
 
-      return { token, user };
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError("Incorrect credentials");
+            }
+
+            const token = signToken(user);
+
+            return { token, user };
+        },
+        //saveRsvp will return user
+        saveRsvp: async (
+            parent,
+            { response, guests, children, specialFood, foodAllergy },
+            context
+        ) => {
+            console.log("IN SERVER savePRVP 1");
+        console.log("IN SERVER savePRVP",response, guests, children, specialFood, foodAllergy );
+        if (context.user) {
+
+
+            const user =  await User.findOneAndUpdate(
+               { _id: context.user._id },
+               { $add: { rsvp: {response, guests, children, specialFood, foodAllergy} } },
+               { new: true, runValidators: true }
+             );
+     
+             return user;
+           }
+           throw new AuthenticationError('You need to be logged in!'); 
     },
-    //saveRsvp will return user
-    saveRsvp: async (
-      parent,
-      { response, guests, children, specialFood, foodAllergy },
-      context
-    ) => {},
 
-    //changeRsvp will return user
-    changeRsvp: async (
-      parent,
-      { response, guests, children, specialFood, foodAllergy }
-    ) => {},
+        //changeRsvp will return user
+        changeRsvp: async (
+            parent,
+            { response, guests, children, specialFood, foodAllergy }
+        ) => { },
+
+       
+
 
     //addRegistryItem will return user
-    addRegistryItem: async (parent, { registryItem }) => {},
+    addRegistryItem: async (parent, { registryItem }, context) => {
+      const regItem = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $set: { registryItem } },
+        { new: true }
+      );
+      return regItem;
+    },
   },
 };
 
