@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Landing from "../pages/landing/Landing";
 import About from "../pages/about/About";
 import Registry from "../pages/registry/Registry";
-import Contact from "../pages/rsvp/Contact";
+import Rsvp from "../pages/rsvp/Rsvp";
 import Social from "../pages/social/Social";
 
 const AnimatedRoutes = ({ personalDetails }) => {
@@ -11,7 +11,15 @@ const AnimatedRoutes = ({ personalDetails }) => {
 
   return (
     <Routes location={location} key={location.pathname}>
-      <Route path="/" element={<Landing name={personalDetails.name} tagline={personalDetails.tagline} />} />
+      <Route
+        path="/"
+        element={
+          <Landing
+            name={personalDetails.name}
+            tagline={personalDetails.tagline}
+          />
+        }
+      />
       <Route
         path="/about"
         element={
@@ -24,7 +32,7 @@ const AnimatedRoutes = ({ personalDetails }) => {
           />
         }
       />
-      <Route path="/rsvp" element={<Contact />} />
+      <Route path="/rsvp" element={<Rsvp />} />
       <Route path="/registry" element={<Registry />} />
       <Route path="/social" element={<Social />}/>
     </Routes>
