@@ -131,6 +131,7 @@ header {
   justify-content: center;
   padding: 20px 0;
   position: relative;
+  white-space: nowrap;
 }
 
 .links a:hover {
