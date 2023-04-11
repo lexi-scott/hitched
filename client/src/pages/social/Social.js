@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/esm/Col";
 import ListGroup from "react-bootstrap/ListGroup";
+import Badge from "react-bootstrap/Badge";
 
 import { QUERY_POSTS } from "../../utils/queries";
 import SocialForm from "./SocialForm";
@@ -49,6 +50,7 @@ export default function Social() {
 
                       <Card.Body>
                         <Card.Title>{post.postAuthor}</Card.Title>
+
                         <Card.Text>{post.content}</Card.Text>
                         <Card.Text>{post.createdAt}</Card.Text>
                         <Card.Text>Comments</Card.Text>
