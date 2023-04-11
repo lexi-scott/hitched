@@ -58,7 +58,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
               <i className="icon fa-solid fa-user"></i>{" "}
             </span>
             <div className="mediaWrap">
-              <h6 className="infoType">Number of Guests</h6>
+              <h6 className="infoType">Number of Guests:</h6>
               <span className="infoValue">{numGuests}</span>
             </div>
           </div>
@@ -69,7 +69,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
               <i className="icon fa-solid fa-envelope "></i>{" "}
             </span>
             <div className="mediaWrap">
-              <h6 className="infoType">Number of Children</h6>
+              <h6 className="infoType">Number of Children: </h6>
               <span className="infoValue">{numChildren}</span>
             </div>
           </div>
@@ -80,7 +80,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
               <i className="icon fa-solid fa-location-pin "></i>{" "}
             </span>
             <div className="mediaWrap">
-              <h6 className="infoType">Special Food</h6>
+              <h6 className="infoType">Special Food: </h6>
               <span className="infoValue">{specialFood}</span>
             </div>
           </div>
@@ -91,7 +91,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
               <i className="icon fa-solid fa-location-pin "></i>{" "}
             </span>
             <div className="mediaWrap">
-              <h6 className="infoType">Food Allergy</h6>
+              <h6 className="infoType">Food Allergy: </h6>
               <span className="infoValue">{foodAllergy}</span>
             </div>
           </div>
