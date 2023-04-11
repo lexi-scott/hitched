@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-// import { useMutation, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-// import { QUERY_USERS } from "../../utils/queries";
+import { QUERY_USERS } from "../../utils/queries";
 // import { ADD_POST } from "../../utils/mutations";
 const users = [
   {
@@ -26,10 +26,10 @@ const users = [
 ];
 
 export default function Social() {
-  // const { data, loading } = useQuery(QUERY_USERS);
+  const { data, loading, error } = useQuery(QUERY_USERS);
 
-  // const test = data?.users || [];
-  // console.log(test);
+  const test = data?.users || [];
+  console.log(data);
   const [post, setPost] = useState({
     name: "",
     postContent: "",
@@ -50,39 +50,10 @@ export default function Social() {
     console.log(users);
   };
 
-  // const [addPost, { error }] = useMutation(ADD_POST);
-
-  // const handleChange = (e) => {
-  //   setPost(e.target.value);
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const userId = auth.getProfile().data.id;
-  //   try {
-  //     const data = await addPost({
-  //       variables: { userId, post },
-  //     });
-
-  //     setPost("");
-
-  //     console.log("Post created successfully");
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   return (
     <div className="container-fluid w-75 social-page d-flex flex-column ">
       <div className="user-inputs d-flex">
         <InputGroup className="mb-3">
-          <Form.Control
-            placeholder="Whats your name?"
-            aria-label="post"
-            aria-describedby="basic-addon2"
-            name="name"
-            onChange={handleChange}
-          />
           <Form.Control
             name="postContent"
             placeholder="Whats on your mind..."

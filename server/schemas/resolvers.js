@@ -103,10 +103,19 @@ const resolvers = {
             { response, guests, children, specialFood, foodAllergy }
         ) => { },
 
-        //addRegistryItem will return user
-        addRegistryItem: async (parent, { registryItem }) => { },
+       
 
+
+    //addRegistryItem will return user
+    addRegistryItem: async (parent, { registryItem }, context) => {
+      const regItem = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $set: { registryItem } },
+        { new: true }
+      );
+      return regItem;
     },
+  },
 };
 
 module.exports = resolvers;

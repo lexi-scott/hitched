@@ -65,7 +65,7 @@ const typeDefs = gql`
       specialFood: String
       foodAllergy: String
     ): User
-    addRegistryItem(registryItem: String): User
+    addRegistryItem(registryItem: String, userId: ID): User
   }
 `;
 
