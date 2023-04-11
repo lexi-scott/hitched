@@ -13,10 +13,10 @@ export const LOGIN_USER = gql`
 `;
 
 export const SAVE_RSVP = gql`
-  mutation SaveRsvp(
-    $response: Boolean!
-    $guests: Int!
-    $children: Int!
+  mutation saveRsvp(
+    $response: Boolean
+    $guests: Int
+    $children: Int
     $specialFood: String
     $foodAllergy: String
   ) {
@@ -27,8 +27,9 @@ export const SAVE_RSVP = gql`
       specialFood: $specialFood
       foodAllergy: $foodAllergy
     ) {
-      email
-      username
+      rsvp {
+        response
+      }
     }
   }
 `;

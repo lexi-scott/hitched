@@ -34,7 +34,7 @@ export default function Social() {
         {postData.length === 0 ? (
           <h1 style={{ color: "white" }}>Looks empty in here...</h1>
         ) : (
-          <Row xs={1} md={2}>
+          <Row xs={1} md={2} className="g-4 ">
             {postData.map((post) => {
               return (
                 <>
@@ -56,7 +56,7 @@ export default function Social() {
                         <Card.Text>Comments</Card.Text>
                         <ListGroup
                           variant="flush"
-                          className="g-4 overflow-auto"
+                          className="overflow-auto"
                           style={{ height: "12rem" }}
                         >
                           {post.comments.length === 0 ? (
