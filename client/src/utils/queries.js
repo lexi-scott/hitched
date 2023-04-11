@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-
 export const QUERY_USERS = gql`
   {
     users {
@@ -12,18 +11,8 @@ export const QUERY_USERS = gql`
         content
         postAuthor
         createdAt
+        image
       }
-    }
-  }
-`;
-
-export const QUERY_SINGLE_USER = gql`
-  query singleUser($username: String!) {
-    user(username: $username) {
-      _id
-      username
-      email
-      posts
     }
   }
 `;
@@ -41,16 +30,18 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_RSVP = gql`
-query allrsvps {
-    rsvps {
+export const QUERY_POSTS = gql`
+  {
+    posts {
       _id
-      guests
-      children
-      specialFood
-      foodAllergy
+      postAuthor
+      content
+      image
+      createdAt
+      comments {
+        commentText
+        commentAuthor
+      }
     }
   }
 `;
-
-

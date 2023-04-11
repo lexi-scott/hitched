@@ -9,12 +9,18 @@ const typeDefs = gql`
     registryItem: String
     rsvp: Rsvp
   }
+  type Comment {
+    commentText: String
+    commentAuthor: String
+    createdAt: String
+  }
 
   type Post {
     _id: ID
     content: String
     postAuthor: String
     createdAt: String
+    image: String
     comments: [Comment]
   }
 
@@ -26,13 +32,6 @@ const typeDefs = gql`
     foodAllergy: String
   }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
-
   type Auth {
     token: ID!
     user: User
@@ -41,7 +40,7 @@ const typeDefs = gql`
   type Query {
     users: [User]!
     user(username: String!): User
-    posts(userId: ID!): User
+    posts: [Post]
     post(postId: ID!): Post
     me: User
   }
@@ -49,8 +48,12 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(content: String!, postAuthor: String!): Post
-    addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
+    addPost(content: String!, postAuthor: String!, image: String): Post
+    addComment(
+      postId: String!
+      commentText: String!
+      commentAuthor: String!
+    ): Post
     saveRsvp(
       response: Boolean!
       guests: Int!

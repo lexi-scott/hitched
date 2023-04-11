@@ -1,0 +1,16 @@
+.social-cards {
+  border: 3px solid red;
+}
+
+.card-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+  height: 20rem;
+}
+
+.post-image {
+  height: 350px;
+}
