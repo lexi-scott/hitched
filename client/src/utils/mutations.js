@@ -14,7 +14,7 @@ export const LOGIN_USER = gql`
 
 export const SAVE_RSVP = gql`
   mutation SaveRsvp(
-    $response: Boolean!
+    $response: String!
     $guests: Int!
     $children: Int!
     $specialFood: String
@@ -35,7 +35,7 @@ export const SAVE_RSVP = gql`
 
 export const CHANGE_RSVP = gql`
   mutation ChangeRsvp(
-    $response: Boolean!
+    $response: String!
     $guests: Int!
     $children: Int!
     $specialFood: String

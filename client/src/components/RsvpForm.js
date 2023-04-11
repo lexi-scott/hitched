@@ -36,7 +36,7 @@ const styles = {
 const RsvpForm = () => {
 
   const [isHover, setIsHover] = useState(false);
-  const [guestResponse, setGuestResponse] = useState(true);
+  const [guestResponse, setGuestResponse] = useState("Yes");
   const [numGuests, setNumGuests] = useState(0);
   const [numChildren, setNumChildren] = useState(0);
   const [guestSpecialFood, setGuestSpecialFood] = useState("");
@@ -100,21 +100,23 @@ const RsvpForm = () => {
     console.log(e.target.value, e.target.name);
 
     if(e.target.name === "response"){
-    if (e.target.value === "No") {
-      setGuestResponse(false)
-    } else{
-      setGuestResponse(true)
-    }
+    // if (e.target.value === "No") {
+    //   setGuestResponse(false)
+    // } else{
+    //   setGuestResponse(true)
+    // }
+    setGuestResponse(e.target.value);
   }
 
   if(e.target.name === "specialFood"){
-    if (e.target.value === "Vegetarian") {
-      setGuestSpecialFood("Vegetarian")
-    } else if (e.target.value === "Vegan"){
-      setGuestSpecialFood('Vegan')
-    } else {
-      setGuestSpecialFood('None')
-    }
+    // if (e.target.value === "Vegetarian") {
+    //   setGuestSpecialFood("Vegetarian")
+    // } else if (e.target.value === "Vegan"){
+    //   setGuestSpecialFood('Vegan')
+    // } else {
+    //   setGuestSpecialFood('None')
+    // }
+    setGuestSpecialFood(e.target.value);
   }
 
   if(e.target.name === "foodAllergy"){
@@ -127,19 +129,20 @@ const RsvpForm = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
 
+
     console.log("IN SUBMIT", guestResponse, numGuests, numChildren, guestSpecialFood, guestFoodAllergy);
 
     // get token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (!token) {
-      return false;
-    }
+    // if (!token) {
+    //   return false;
+    // }
 
     try {
 
       const { data } = await saveRsvp({
-        variables: { guestResponse, numGuests, numChildren, guestSpecialFood, guestFoodAllergy },
+        variables: { response: guestResponse, guests:numGuests, children: numChildren, specialFood: guestSpecialFood, foodAllergy: guestFoodAllergy },
       });
 
     } catch (err) {
