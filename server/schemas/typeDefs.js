@@ -25,7 +25,7 @@ const typeDefs = gql`
   }
 
   type Rsvp {
-    response: Boolean!
+    response: String!
     guests: Int!
     children: Int!
     specialFood: String
@@ -55,14 +55,14 @@ const typeDefs = gql`
       commentAuthor: String!
     ): Post
     saveRsvp(
-      response: Boolean!
+      response: String!
       guests: Int!
       children: Int!
       specialFood: String
       foodAllergy: String
     ): User
     changeRsvp(
-      response: Boolean!
+      response: String!
       guests: Int!
       children: Int!
       specialFood: String
