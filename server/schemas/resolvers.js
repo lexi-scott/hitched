@@ -88,7 +88,7 @@ const resolvers = {
 
             const user =  await User.findOneAndUpdate(
                { _id: context.user._id },
-               { $add: { rsvp: {response, guests, children, specialFood, foodAllergy} } },
+               { $set: { rsvp: {response, guests, children, specialFood, foodAllergy} } },
                { new: true, runValidators: true }
              );
      
