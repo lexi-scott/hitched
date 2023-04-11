@@ -1,18 +1,15 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams } from "react-router-dom";
 import landingImage from "../../images/me.jpg";
 import SocialIcons from "../../components/SocialIcons";
 import Auth from "../../utils/auth";
-import React from 'react';
-import { useQuery } from '@apollo/client';
-import { QUERY_SINGLE_USER, QUERY_ME } from '../../utils/queries';
-
-
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../../utils/queries";
 
 const Landing = ({ name, tagline }) => {
   const styles = {
-
     landing: {
       height: "calc(100% - 93px)",
       display: "flex",
@@ -27,7 +24,7 @@ const Landing = ({ name, tagline }) => {
       // mixBlendMode: "lighten",
       height: "80%",
     },
-//test
+    //test
     textContainer: {
       display: "flex",
       flexDirection: "column",
@@ -54,34 +51,28 @@ const Landing = ({ name, tagline }) => {
   const { profileId } = useParams();
 
   // If there is no `profileId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
-  const { loading, data } = useQuery(
-    profileId ? QUERY_SINGLE_USER : QUERY_ME,
-    {
-      variables: { profileId: profileId },
-    }
-  );
+  // const { loading, data } = useQuery(profileId ? QUERY_ME, {
+  // }:null);
 
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
-  const profile = data?.me || data?.profile || {};
-
+  // const profile = data?.me || data?.profile || {};
 
   if (Auth.loggedIn() && Auth.getProfile().data._id === profileId) {
     return <Navigate to="/" />;
   }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (!profile?.name) {
-    return (
-      <h4>
-        You need to be logged in to see your profile page. Use the navigation
-        links above to sign up or log in!
-      </h4>
-    );
-  }
-
+  // if (!profile?.name) {
+  //   return (
+  //     <h4>
+  //       You need to be logged in to see your profile page. Use the navigation
+  //       links above to sign up or log in!
+  //     </h4>
+  //   );
+  // }
 
   return (
     <section className="landing" style={styles.landing}>
