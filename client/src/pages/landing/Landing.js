@@ -5,7 +5,7 @@ import SocialIcons from "../../components/SocialIcons";
 
 const Landing = ({ name, tagline }) => {
   const styles = {
-    
+
     landing: {
       height: "calc(100% - 93px)",
       display: "flex",
@@ -20,7 +20,7 @@ const Landing = ({ name, tagline }) => {
       // mixBlendMode: "lighten",
       height: "80%",
     },
-
+//test
     textContainer: {
       display: "flex",
       flexDirection: "column",
