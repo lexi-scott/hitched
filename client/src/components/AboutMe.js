@@ -1,7 +1,6 @@
 
 import aboutMeImg from "../images/d&B.png";
 import { motion } from "framer-motion";
-import SocialIcons from "../components/SocialIcons";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
 import invitation from "../pages/about/Wedding-Invitation.pdf";
@@ -76,7 +75,7 @@ const AboutMe = ({ name, email, location, availability, brand }) => {
                   <p>{location}</p>
                 </div>
                 <div className="col-12 col-md-6 info">
-                  <span>Availability:</span>
+                  <span>Date:</span>
                   <p>{availability}</p>
                 </div>
               </div>
@@ -85,7 +84,6 @@ const AboutMe = ({ name, email, location, availability, brand }) => {
               <button className="btn downloadCV" onClick={handleDownload} disabled={downloading}>
                 {downloading ? "Downloading..." : "Download Invitation"}
               </button>{" "}
-              <SocialIcons />
             </div>
           </div>
         </motion.div>

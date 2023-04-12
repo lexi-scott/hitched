@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Navigate, useParams } from "react-router-dom";
 import landingImage from "../../images/landingd&b.jpg";
-import SocialIcons from "../../components/SocialIcons";
 import Auth from "../../utils/auth";
 import React from "react";
 import { useQuery } from "@apollo/client";
@@ -110,8 +109,6 @@ const Landing = ({ name, tagline }) => {
           alt=""
         />
       </div>
-
-      <SocialIcons />
     </section>
   );
 };
