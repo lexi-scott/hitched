@@ -5,6 +5,7 @@
 }
 .landing .description {
   font-size: 26px;
+  color: var(--text-color)
 }
 
 .landingImage {
