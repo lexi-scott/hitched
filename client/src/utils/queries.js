@@ -10,7 +10,6 @@ export const QUERY_USERS = gql`
         _id
         content
         postAuthor
-        createdAt
         image
       }
     }
