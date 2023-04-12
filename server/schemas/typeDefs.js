@@ -25,7 +25,7 @@ const typeDefs = gql`
   }
 
   type Rsvp {
-    response: Boolean!
+    response: String!
     guests: Int!
     children: Int!
     specialFood: String
@@ -38,7 +38,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]!
+    users: [User]
     user(username: String!): User
     posts: [Post]
     post(postId: ID!): Post

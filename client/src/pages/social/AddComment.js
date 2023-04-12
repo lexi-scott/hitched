@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
+import { QUERY_POSTS } from "../../utils/queries";
 import { useState } from "react";
 import auth from "../../utils/auth";
 export function AddComment({ postId }) {
@@ -15,15 +16,26 @@ export function AddComment({ postId }) {
     postId: postId,
   });
 
-  const [addComment, { error }] = useMutation(ADD_COMMENT);
+  // const [addComment, { error }] = useMutation(ADD_COMMENT);
 
-  if (error) console.error(error);
+  const [addComment, { error, data }] = useMutation(ADD_COMMENT, {
+    update(cache, { data: { addComment } }) {
+      try {
+        const { posts } = cache.readQuery({ query: QUERY_POSTS });
+
+        cache.writeQuery({
+          query: QUERY_POSTS,
+          data: { posts: [...posts, addComment] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
 
   const handleChange = (e) => {
     setCommentForm({ ...commentForm, commentText: e.target.value });
   };
-
-  console.log(commentForm);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +51,7 @@ export function AddComment({ postId }) {
           commentAuthor: auth.getProfile().data.username,
         },
       });
-      window.location.reload();
+
       setCommentForm({
         commentText: "",
       });

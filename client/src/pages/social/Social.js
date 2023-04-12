@@ -1,14 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
-import CardColumns from "react-bootstrap/CardColumns";
 import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
-import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/esm/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-import Badge from "react-bootstrap/Badge";
 
 import { QUERY_POSTS } from "../../utils/queries";
 import SocialForm from "./SocialForm";
@@ -19,9 +15,9 @@ export default function Social() {
   //GETTING ALL THE DATA FROM POST
   const postData = data?.posts || [];
 
-  if (loading) return <h1>Loading...</h1>;
+  console.log(postData);
 
-  if (error) console.error(error);
+  if (loading) return <h1>Loading...</h1>;
 
   console.log(postData);
 
