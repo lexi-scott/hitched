@@ -46,7 +46,7 @@ const NavLinks = () => {
         ) : (
           <NavLink onClick={() => setShowModal(true)}>Login</NavLink>
         )}
-        ;
+
       </nav>
       {/* set modal data up */}
       <Modal
