@@ -282,7 +282,7 @@ const RsvpForm = () => {
           Please choose your special meal preference:
         </label>
         <div onChange={onChangeValue} style={{ display: "inline-block" }}>
-          <span> &n</span>
+          <span> </span>
           <label style={{ color: "white", marginRight: "10px" }}>
             <input
               type="radio"
