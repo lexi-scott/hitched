@@ -11,8 +11,8 @@ const Gift = ({
   image,
   color,
   id,
-  github,
-  deployed,
+  learnMore,
+  give,
   text,
 }) => {
 
@@ -92,10 +92,9 @@ const Gift = ({
 
         <button
           className="btn"
-          onClick={() => (window.location.href = deployed)}
+          onClick={() => (window.location.href = give)}
         >
           Live Link
-
         </button>
       </Modal>
     </motion.div>
