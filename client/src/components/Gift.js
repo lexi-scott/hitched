@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import closeModal from "../images/close.svg";
 
+
 const Gift = ({
   experiences,
   gift,
@@ -14,6 +15,7 @@ const Gift = ({
   deployed,
   text,
 }) => {
+
   const [ref, inView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
@@ -84,14 +86,16 @@ const Gift = ({
         ></img>
         <h3 className="modalTitle">{gift}</h3>
         <p className="projectDescription">{text}</p>
-        <button className="btn" onClick={() => (window.location.href = github)}>
-          GitHub Repo
+        <button className="btn" onClick={() => (window.location.href = learnMore)}>
+          Learn More
         </button>
+
         <button
           className="btn"
           onClick={() => (window.location.href = deployed)}
         >
           Live Link
+
         </button>
       </Modal>
     </motion.div>

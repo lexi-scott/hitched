@@ -13,8 +13,8 @@ const Portfolio = () => {
         experiences={registry.experiences}
         image={registry.image}
         color={registry.bgcolor}
-        github={registry.github}
-        deployed={registry.deployed}
+        learnMore={registry.learnMore}
+        give={registry.give}
         text={registry.text}
       />
     ));
