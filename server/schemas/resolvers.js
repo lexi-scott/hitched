@@ -81,7 +81,7 @@ const resolvers = {
       { response, guests, children, specialFood, foodAllergy },
       context
     ) => {
-      console.log("IN SERVER savePRVP 1");
+      console.log("IN SERVER saveRSVP 1");
       console.log(
         "IN SERVER savePRVP",
         response,
@@ -91,6 +91,7 @@ const resolvers = {
         foodAllergy
       );
       if (context.user) {
+        console.log(context.user)
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
@@ -98,7 +99,7 @@ const resolvers = {
               rsvp: { response, guests, children, specialFood, foodAllergy },
             },
           },
-          { new: true, runValidators: true }
+          { new: true }
         );
 
         return user;
