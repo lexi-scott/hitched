@@ -46,7 +46,6 @@ const NavLinks = () => {
         ) : (
           <NavLink onClick={() => setShowModal(true)}>Login</NavLink>
         )}
-
       </nav>
       {/* set modal data up */}
       <Modal
@@ -59,8 +58,7 @@ const NavLinks = () => {
         <Tab.Container defaultActiveKey="login">
           <Modal.Header closeButton>
             <Modal.Title id="signup-modal">
-              <Nav variant="pills">
-              </Nav>
+              <Nav variant="pills"></Nav>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
