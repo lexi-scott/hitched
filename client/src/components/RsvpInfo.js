@@ -23,7 +23,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
               <i className="icon fa-solid fa-user"></i>{" "}
             </span>
             <div className="mediaWrap">
-              <h6 className="infoType">Name</h6>
+              <h6 className="infoType">Name:</h6>
               <span className="infoValue">{name}</span>
             </div>
           </div>
@@ -34,7 +34,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
               <i className="icon fa-solid fa-envelope "></i>{" "}
             </span>
             <div className="mediaWrap">
-              <h6 className="infoType">Email</h6>
+              <h6 className="infoType">Email:</h6>
               <span className="infoValue">
                 <a href={`mailto:${email}`}>{email}</a>
               </span>
@@ -44,10 +44,10 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
         <li>
           <div className="personalContactInfo">
             <span className="infoIcon">
-              <i className="icon fa-solid fa-location-pin "></i>{" "}
+              <i className="icon fa-solid fa-reply "></i>{" "}
             </span>
             <div className="mediaWrap">
-              <h6 className="infoType">Response</h6>
+              <h6 className="infoType">Response:</h6>
               <span className="infoValue">{response}</span>
             </div>
           </div>
@@ -55,7 +55,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
         <li>
           <div className="personalContactInfo">
             <span className="infoIcon">
-              <i className="icon fa-solid fa-user"></i>{" "}
+              <i className="icon fa-solid fa-hashtag"></i>{" "}
             </span>
             <div className="mediaWrap">
               <h6 className="infoType">Number of Guests:</h6>
@@ -66,7 +66,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
         <li>
           <div className="personalContactInfo">
             <span className="infoIcon">
-              <i className="icon fa-solid fa-envelope "></i>{" "}
+              <i className="icon fa-solid fa-child-reaching"></i>{" "}
             </span>
             <div className="mediaWrap">
               <h6 className="infoType">Number of Children: </h6>
@@ -77,7 +77,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
         <li>
           <div className="personalContactInfo">
             <span className="infoIcon">
-              <i className="icon fa-solid fa-location-pin "></i>{" "}
+              <i className="icon fa-solid fa-burger"></i>{" "}
             </span>
             <div className="mediaWrap">
               <h6 className="infoType">Special Food: </h6>
@@ -88,7 +88,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
         <li>
           <div className="personalContactInfo">
             <span className="infoIcon">
-              <i className="icon fa-solid fa-location-pin "></i>{" "}
+              <i className="icon fa-solid fa-ban"></i>{" "}
             </span>
             <div className="mediaWrap">
               <h6 className="infoType">Food Allergy: </h6>
