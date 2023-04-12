@@ -23,9 +23,18 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      rsvp
+      rsvp {
+        response
+        guests
+        children
+        specialFood
+        foodAllergy
+      }
       registryItem
-      posts
+      posts {
+        content
+        postAuthor
+      }
     }
   }
 `;

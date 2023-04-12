@@ -10,7 +10,9 @@ import { QUERY_ME } from "../../utils/queries";
 const Rsvp = () => {
   const { data } = useQuery(QUERY_ME);
 
-  const userData = data?.me || data?.User || {};
+  const userData = data?.me || {};
+
+  console.log("RSVP...", userData)
 
   return (
     <section className="contact">
