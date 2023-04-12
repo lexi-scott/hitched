@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Navigate, useParams } from "react-router-dom";
-import landingImage from "../../images/me.jpg";
+import landingImage from "../../images/landingd&b.jpg";
 import SocialIcons from "../../components/SocialIcons";
 import Auth from "../../utils/auth";
 import React from "react";
@@ -13,8 +13,9 @@ const Landing = ({ name, tagline }) => {
     landing: {
       height: "calc(100% - 93px)",
       display: "flex",
-      justifyContent: "center",
+      justifyContent: "left",
       alignItems: "center",
+      marginLeft: "30px"
     },
 
     landingImage: {

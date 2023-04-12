@@ -1,4 +1,5 @@
-import aboutMeImg from "../images/aboutdavenbuster.jpeg";
+
+import aboutMeImg from "../images/d&B.png";
 import { motion } from "framer-motion";
 import SocialIcons from "../components/SocialIcons";
 import { useInView } from "react-intersection-observer";

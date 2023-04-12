@@ -24,7 +24,7 @@ export const QUERY_ME = gql`
       username
       email
       rsvp
-      reguitryItem
+      registryItem
       posts
     }
   }
