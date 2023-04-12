@@ -1,11 +1,20 @@
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
-const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, foodAllergy }) => {
+const RsvpInfo = ({ rsvp, email, name }) => {
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
   });
+
+  if (!rsvp) {
+    return <h1>Loading</h1>;
+  }
+
+  const { response, guests, children, specialFood, foodAllergy } = rsvp;
+
+  console.log(response, guests, children, specialFood, foodAllergy);
+
   return (
     <motion.div
       className="contactInfo"
@@ -59,7 +68,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
             </span>
             <div className="mediaWrap">
               <h6 className="infoType">Number of Guests:</h6>
-              <span className="infoValue">{numGuests}</span>
+              <span className="infoValue">{guests}</span>
             </div>
           </div>
         </li>
@@ -70,7 +79,7 @@ const RsvpInfo = ({ name, email, response, numGuests, numChildren, specialFood, 
             </span>
             <div className="mediaWrap">
               <h6 className="infoType">Number of Children: </h6>
-              <span className="infoValue">{numChildren}</span>
+              <span className="infoValue">{children}</span>
             </div>
           </div>
         </li>

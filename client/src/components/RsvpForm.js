@@ -91,7 +91,6 @@ const RsvpForm = () => {
   const onChangeValue = (e) => {
     console.log(e.target.value, e.target.name);
 
-
     if (e.target.name === "response") {
       if (e.target.value === "No") {
         setGuestResponse(false);
@@ -109,26 +108,25 @@ const RsvpForm = () => {
         setGuestSpecialFood("None");
       }
     }
-    if(e.target.name === "response"){
-    // if (e.target.value === "No") {
-    //   setGuestResponse(false)
-    // } else{
-    //   setGuestResponse(true)
-    // }
-    setGuestResponse(e.target.value);
-  }
+    if (e.target.name === "response") {
+      // if (e.target.value === "No") {
+      //   setGuestResponse(false)
+      // } else{
+      //   setGuestResponse(true)
+      // }
+      setGuestResponse(e.target.value);
+    }
 
-  if(e.target.name === "specialFood"){
-    // if (e.target.value === "Vegetarian") {
-    //   setGuestSpecialFood("Vegetarian")
-    // } else if (e.target.value === "Vegan"){
-    //   setGuestSpecialFood('Vegan')
-    // } else {
-    //   setGuestSpecialFood('None')
-    // }
-    setGuestSpecialFood(e.target.value);
-  }
-
+    if (e.target.name === "specialFood") {
+      // if (e.target.value === "Vegetarian") {
+      //   setGuestSpecialFood("Vegetarian")
+      // } else if (e.target.value === "Vegan"){
+      //   setGuestSpecialFood('Vegan')
+      // } else {
+      //   setGuestSpecialFood('None')
+      // }
+      setGuestSpecialFood(e.target.value);
+    }
 
     if (e.target.name === "foodAllergy") {
       setGuestFoodAllergy(e.target.value);
@@ -139,10 +137,14 @@ const RsvpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
-
-    console.log("IN SUBMIT", guestResponse, numGuests, numChildren, guestSpecialFood, guestFoodAllergy);
-
+    console.log(
+      "IN SUBMIT",
+      guestResponse,
+      numGuests,
+      numChildren,
+      guestSpecialFood,
+      guestFoodAllergy
+    );
 
     // get token
     // const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -154,13 +156,12 @@ const RsvpForm = () => {
     try {
       const { data } = await saveRsvp({
         variables: {
-          guestResponse,
-          numGuests,
-          numChildren,
-          guestSpecialFood,
-          guestFoodAllergy,
+          response: guestResponse,
+          guests: numGuests,
+          children: numChildren,
+          specialFood: guestSpecialFood,
+          foodAllergy: guestFoodAllergy,
         },
-
       });
     } catch (err) {
       console.error(err);

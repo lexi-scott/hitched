@@ -30,7 +30,7 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email}) => {
+    addUser: async (parent, { username, email }) => {
       const user = await User.create({ username, email });
       console.log("server adduser ", user);
       const token = signToken(user);
@@ -91,7 +91,7 @@ const resolvers = {
         foodAllergy
       );
       if (context.user) {
-        console.log(context.user)
+        console.log(context.user);
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           {

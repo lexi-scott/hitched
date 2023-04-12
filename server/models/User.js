@@ -26,7 +26,7 @@ const userSchema = new Schema(
     rsvp: rsvpSchema,
     //save registry item this user selected
     registryItem: {
-      description: String,
+      type: String,
     },
     //Added posts array
     posts: [
