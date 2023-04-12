@@ -3,12 +3,14 @@ import Button from "react-bootstrap/Button";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
 import { useState } from "react";
+import auth from "../../utils/auth";
 export function AddComment({ postId }) {
   // REPLACE WHEN AUTH LOG IN IS AVAILABLE
-  const tempUser = "TEMPUSER";
+
+  // const tempUser = "TEMPUSER";
 
   const [commentForm, setCommentForm] = useState({
-    commentAuthor: tempUser,
+    commentAuthor: "",
     commentText: "",
     postId: postId,
   });
@@ -25,11 +27,16 @@ export function AddComment({ postId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = auth.loggedIn() ? auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
 
     try {
       const { data } = await addComment({
         variables: {
           ...commentForm,
+          commentAuthor: auth.getProfile().data.username,
         },
       });
       window.location.reload();

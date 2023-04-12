@@ -24,12 +24,17 @@ export default function SocialForm() {
   const handlePostChange = (e) => {
     e.preventDefault();
 
+    const token = auth.loggedIn() ? auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
+
     console.log(e.target.value);
     const { value } = e.target;
     ///REPLACE POST AUTHOR ONCE LOG IN AUTHENTICATION IS SET UP
     setFormPost({
       ...formPost,
-      postAuthor: "testUser",
+      postAuthor: auth.getProfile().data.username,
       content: value,
     });
   };
