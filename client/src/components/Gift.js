@@ -94,7 +94,7 @@ const Gift = ({
           className="btn"
           onClick={() => (window.location.href = give)}
         >
-          Live Link
+          Sponsor this gift!
         </button>
       </Modal>
     </motion.div>
