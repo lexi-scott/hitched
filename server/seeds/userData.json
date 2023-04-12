@@ -1,32 +1,26 @@
 [
   {
     "username": "Brian Kernighan",
-    "email": "brian@test.com",
-    "password": "password10"
+    "email": "brian@test.com"
   },
   {
     "username": "Max Kanat-Alexander",
-    "email": "maxr@test.com",
-    "password": "password10"
+    "email": "maxr@test.com"
   },
   {
     "username": "Wally Bean",
-    "email": "wally@test.com",
-    "password": "password10"
+    "email": "wally@test.com"
   },
   {
     "username": "Kent Beck",
-    "email": "kbeck@test.com",
-    "password": "password10"
+    "email": "kbeck@test.com"
   },
   {
     "username": "Edward V. Berard",
-    "email": "eddy@test.com",
-    "password": "password10"
+    "email": "eddy@test.com"
   },
   {
     "username": "Alan Kay",
-    "email": "alan@test.com",
-    "password": "password10"
+    "email": "alan@test.com"
   }
 ]

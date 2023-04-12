@@ -10,7 +10,6 @@ export const QUERY_USERS = gql`
         _id
         content
         postAuthor
-        createdAt
         image
       }
     }
@@ -23,9 +22,18 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      rsvp
+      rsvp {
+        response
+        guests
+        children
+        specialFood
+        foodAllergy
+      }
       registryItem
-      posts
+      posts {
+        content
+        postAuthor
+      }
     }
   }
 `;

@@ -6,6 +6,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
 import auth from "../../utils/auth";
 import ImageUploading from "react-images-uploading";
+import { QUERY_POSTS } from "../../utils/queries";
 
 export default function SocialForm() {
   //BOOTSTRAP MODAL
@@ -14,7 +15,24 @@ export default function SocialForm() {
   const handleShow = () => setShow(true);
 
   //MUTATION FOR ADDING POST
-  const [addPost, { error, data }] = useMutation(ADD_POST);
+  // const [addPost, { error, data }] = useMutation(ADD_POST);
+
+  //TESTING
+  const [addPost, { error, data }] = useMutation(ADD_POST, {
+    update(cache, { data: { addPost } }) {
+      try {
+        const { posts } = cache.readQuery({ query: QUERY_POSTS });
+
+        cache.writeQuery({
+          query: QUERY_POSTS,
+          data: { posts: [...posts, addPost] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
+
   const [formPost, setFormPost] = useState({
     postAuthor: "",
     content: "",
@@ -29,7 +47,6 @@ export default function SocialForm() {
       return false;
     }
 
-    console.log(e.target.value);
     const { value } = e.target;
     ///REPLACE POST AUTHOR ONCE LOG IN AUTHENTICATION IS SET UP
     setFormPost({
@@ -39,10 +56,8 @@ export default function SocialForm() {
     });
   };
 
-  const handleSubmit = async () => {
-    console.log(formPost);
-    console.log(images[0]);
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     //IF THERES AN IMAGE PUT THE DATA, IF NOT SET NULL
     const uploadImage = images[0] !== undefined ? images[0].data_url : null;
 
@@ -50,7 +65,8 @@ export default function SocialForm() {
       const { data } = await addPost({
         variables: { ...formPost, image: uploadImage },
       });
-      window.location.reload();
+      // window.location.replace("/social");
+      handleClose();
     } catch (err) {
       console.error(err);
     }
