@@ -30,8 +30,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { username, email}) => {
+      const user = await User.create({ username, email });
       console.log("server adduser ", user);
       const token = signToken(user);
       return { token, user };
@@ -65,11 +65,11 @@ const resolvers = {
         throw new AuthenticationError("No user found with this email address");
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      // const correctPw = await user.isCorrectPassword(password);
 
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
+      // if (!correctPw) {
+      //   throw new AuthenticationError("Incorrect credentials");
+      // }
 
       const token = signToken(user);
 
@@ -81,7 +81,7 @@ const resolvers = {
       { response, guests, children, specialFood, foodAllergy },
       context
     ) => {
-      console.log("IN SERVER savePRVP 1");
+      console.log("IN SERVER saveRSVP 1");
       console.log(
         "IN SERVER savePRVP",
         response,
@@ -91,6 +91,7 @@ const resolvers = {
         foodAllergy
       );
       if (context.user) {
+        console.log(context.user)
         const user = await User.findOneAndUpdate(
           { _id: context.user._id },
           {
@@ -98,7 +99,7 @@ const resolvers = {
               rsvp: { response, guests, children, specialFood, foodAllergy },
             },
           },
-          { new: true, runValidators: true }
+          { new: true }
         );
 
         return user;

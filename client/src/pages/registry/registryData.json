@@ -4,8 +4,8 @@
     "image": "./projectImages/bvi.png",
     "text": "We are going back to the British Virgin Islands where we took our first international vacation. If you choose to give to this gift we will enjoy surfing, diving and soaking up the sun while thinking of how much we love you!",
     "experiences": "Scuba Diving | Boat Day | Surf Lessons",
-    "github": "https://github.com/lexi-scott/pms-success",
-    "deployed": "https://pacific-tundra-79298.herokuapp.com/",
+    "learnMore": "https://google.com",
+    "give": "https://pacific-tundra-79298.herokuapp.com/",
     "bgcolor": "#dcb62d",
     "id": "1"
   },
@@ -14,8 +14,8 @@
     "image": "./projectImages/parks.png",
     "experiences": "Camping | Ziplining | Rafting",
     "text": "We spent the beginning of our relationship on hikes. We love being outdoors and taking the dogs with us. If you choose to donate to this experience we will use your gift to campsites, fuel and rafting!",
-    "github": "https://github.com/lexi-scott/herd",
-    "deployed": "https://cattle-tracker.herokuapp.com/",
+    "learnMore": "https://google.com",
+    "give": "https://cattle-tracker.herokuapp.com/",
     "bgcolor": "#bb4d48",
     "id": "2"
   },
@@ -24,18 +24,18 @@
     "image": "./projectImages/tahoe.png",
     "experiences": "Lift Tickets | Cabin | Apres Ski",
     "text": "Another first trip for us was snowboarding! We love it and always have a blast playing in the snow!",
-    "github": "https://github.com/lexi-scott/e-commerce-back-end",
-    "deployed": "https://github.com/lexi-scott/e-commerce-back-end",
+    "learnMore": "https://google.com",
+    "give": "https://learnMore.com/lexi-scott/e-commerce-back-end",
     "bgcolor": "#78762d",
-    "id": "4"
+    "id": "3"
   },
   {
     "gift": "Donate to the Humane Society",
     "image": "./projectImages/adopt.png",
     "experiences": "Donate | Dogs | Cats",
     "text": "We have all we need and if you wish to use your gift to donate to the local humane society that is great! We love animals and it would be an honor to donate in the name of our love.",
-    "github": "https://github.com/lexi-scott/e-commerce-back-end",
-    "deployed": "https://github.com/lexi-scott/e-commerce-back-end",
+    "learnMore": "https://google.com",
+    "give": "https://learnMore.com/lexi-scott/e-commerce-back-end",
     "bgcolor": "#78762d",
     "id": "4"
   }

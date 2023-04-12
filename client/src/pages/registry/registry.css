@@ -91,6 +91,18 @@
   margin-bottom: 10px;
 }
 
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: var(--sm-spacing);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
 /* --- MEDIA QUEIRES --- */
 
 @media (min-width: 750px) {

@@ -47,7 +47,7 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
+    login(email: String!): Auth
     addPost(content: String!, postAuthor: String!, image: String): Post
     addComment(
       postId: String!
@@ -55,14 +55,14 @@ const typeDefs = gql`
       commentAuthor: String!
     ): Post
     saveRsvp(
-      response: Boolean!
+      response: String!
       guests: Int!
       children: Int!
       specialFood: String
       foodAllergy: String
     ): User
     changeRsvp(
-      response: Boolean!
+      response: String!
       guests: Int!
       children: Int!
       specialFood: String

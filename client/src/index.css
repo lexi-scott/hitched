@@ -7,12 +7,12 @@
 
 /* --- VARIABLES --- */
 :root {
-  --bg-color: #2b2b2b;
-  --hl-color: #e3be2f;
-  --text-color: #f3f3f3;
-  --secondary-text-color: #9f9f9f;
-  --hover-color: #7aa66a;
-  --grey: #9f9f9f76;
+  --bg-color: #eaf1de;
+  --hl-color: #70603b;
+  --text-color: #649c85;
+  --secondary-text-color: #3f514a;
+  --hover-color: #9c9c9b;
+  --grey: #3f514a;
   --spacing: 50px;
   --sm-spacing: 30px;
 }
@@ -131,6 +131,7 @@ header {
   justify-content: center;
   padding: 20px 0;
   position: relative;
+  white-space: nowrap;
 }
 
 .links a:hover {
