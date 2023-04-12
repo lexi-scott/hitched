@@ -15,7 +15,7 @@ const Rsvp = () => {
 
   return (
     <section className="contact">
-      <PageHeader title="RSVP" description="Let's Connect" />
+      <PageHeader title="RSVP" description="Please go ahead and" />
       <div className="contactWrap container">
         <div className="row">
           <div className="col-12 col-lg-6">
