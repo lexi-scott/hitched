@@ -4,6 +4,10 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { SAVE_RSVP } from "../utils/mutations";
 
+import { useQuery } from "@apollo/client";
+
+import { QUERY_ME } from "../utils/queries";
+
 import Auth from "../utils/auth";
 //import { fieldNameFromStoreName } from "@apollo/client/cache";
 
@@ -19,7 +23,7 @@ const styles = {
 
   counterOutput: {
     fontSize: "30px",
-    color: "white",
+    color: "#649c85",
     margin: "20px",
   },
 
@@ -39,7 +43,19 @@ const RsvpForm = () => {
   const [guestSpecialFood, setGuestSpecialFood] = useState("");
   const [guestFoodAllergy, setGuestFoodAllergy] = useState("");
 
-  const [saveRsvp, { error }] = useMutation(SAVE_RSVP);
+  const [saveRsvp, { error }] = useMutation(SAVE_RSVP, {
+    update(cache, { data: { saveRsvp } }) {
+      try {
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: saveRsvp },
+        });
+      } catch (e) {
+        console.error(e);
+      }  
+    },
+  });
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -108,25 +124,14 @@ const RsvpForm = () => {
         setGuestSpecialFood("None");
       }
     }
-    if (e.target.name === "response") {
-      // if (e.target.value === "No") {
-      //   setGuestResponse(false)
-      // } else{
-      //   setGuestResponse(true)
-      // }
-      setGuestResponse(e.target.value);
-    }
+    if(e.target.name === "response"){
+    setGuestResponse(e.target.value);
+  }
 
-    if (e.target.name === "specialFood") {
-      // if (e.target.value === "Vegetarian") {
-      //   setGuestSpecialFood("Vegetarian")
-      // } else if (e.target.value === "Vegan"){
-      //   setGuestSpecialFood('Vegan')
-      // } else {
-      //   setGuestSpecialFood('None')
-      // }
-      setGuestSpecialFood(e.target.value);
-    }
+  if(e.target.name === "specialFood"){
+    setGuestSpecialFood(e.target.value);
+  }
+
 
     if (e.target.name === "foodAllergy") {
       setGuestFoodAllergy(e.target.value);
@@ -147,11 +152,11 @@ const RsvpForm = () => {
     );
 
     // get token
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    // if (!token) {
-    //   return false;
-    // }
+    if (!token) {
+      return false;
+    }
 
     try {
       const { data } = await saveRsvp({
@@ -163,6 +168,16 @@ const RsvpForm = () => {
           foodAllergy: guestFoodAllergy,
         },
       });
+
+      console.log("DATA", data)
+      // let lsRSVP = {username: data.saveRsvp.username, email: data.saveRsvp.email, response: guestResponse,
+      //   guests: numGuests,
+      //   children: numChildren,
+      //   specialFood: guestSpecialFood,
+      //   foodAllergy: guestFoodAllergy}
+      // localStorage.setItem("rsvp", JSON.stringify(lsRSVP));
+      // let temp = localStorage.getItem("rsvp");
+      // console.log("%%%", temp)
     } catch (err) {
       console.error(err);
     }
@@ -180,12 +195,12 @@ const RsvpForm = () => {
     >
       <h4 className="contentTitle">Let us know your plans...</h4>
       <div className="col-12 formGroup">
-        <label style={{ color: "white" }}>Will you be joining us?</label>
+        <label style={{ color: "#649c85" }}>Will you be joining us?</label>
         <div
           onChange={onChangeValue}
           style={{ display: "inline-block", marginLeft: "20px" }}
         >
-          <label style={{ color: "white", marginRight: "10px" }}>
+          <label style={{ color: "#649c85", marginRight: "10px" }}>
             <input
               type="radio"
               value="Yes"
@@ -195,7 +210,7 @@ const RsvpForm = () => {
             />{" "}
             Yes
           </label>
-          <label style={{ color: "white" }}>
+          <label style={{ color: "#649c85" }}>
             <input
               type="radio"
               value="No"
@@ -210,7 +225,7 @@ const RsvpForm = () => {
         className="col-12 col-md-6 formGroup"
         style={{ display: "inline-block" }}
       >
-        <label style={{ color: "white" }}>Number of Guests:</label>
+        <label style={{ color: "#649c85" }}>Number of Guests:</label>
 
         <div className="btnContainer">
           <button
@@ -246,7 +261,7 @@ const RsvpForm = () => {
         className="col-12 col-md-6 formGroup"
         style={{ display: "inline-block" }}
       >
-        <label style={{ color: "white" }}>Number of Children:</label>
+        <label style={{ color: "#649c85" }}>Number of Children:</label>
         <div className="btnContainer">
           <button
             className="controlBtn"
@@ -278,12 +293,11 @@ const RsvpForm = () => {
         </div>
       </div>
       <div className="col-12 formGroup" style={{ marginTop: "20px" }}>
-        <label style={{ color: "white" }}>
+        <label style={{ color: "#649c85" }}>
           Please choose your special meal preference:
         </label>
         <div onChange={onChangeValue} style={{ display: "inline-block" }}>
-          <span> &n</span>
-          <label style={{ color: "white", marginRight: "10px" }}>
+          <label style={{ color: "#649c85", marginRight: "10px" }}>
             <input
               type="radio"
               value="Vegetarian"
@@ -292,7 +306,7 @@ const RsvpForm = () => {
             />
             Vegetarian
           </label>
-          <label style={{ color: "white", marginRight: "10px" }}>
+          <label style={{ color: "#649c85", marginRight: "10px" }}>
             <input
               type="radio"
               value="Vegan"
@@ -301,7 +315,7 @@ const RsvpForm = () => {
             />{" "}
             Vegan
           </label>
-          <label style={{ color: "white" }}>
+          <label style={{ color: "#649c85" }}>
             <input
               type="radio"
               value="None"
@@ -314,7 +328,7 @@ const RsvpForm = () => {
         </div>
       </div>
       <div className="col-12 formGroup">
-        <label style={{ color: "white" }}>
+        <label style={{ color: "#649c85" }}>
           Please let us know of any food allergies:
         </label>
         <textarea
@@ -329,7 +343,7 @@ const RsvpForm = () => {
       </div>
       <div className="col-12 formGroup formSubmit">
         <button className="btn">
-          {success ? "Message Sent" : "Send Message"}
+          {success ? "RSVP Sent" : "Send RSVP"}
         </button>
       </div>
     </motion.form>
