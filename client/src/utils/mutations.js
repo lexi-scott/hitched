@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation login($email: String!) {
+    login(email: $email) {
       token
       user {
         _id
@@ -13,6 +13,7 @@ export const LOGIN_USER = gql`
 `;
 
 export const SAVE_RSVP = gql`
+
   mutation SaveRsvp(
     $response: String!
     $guests: Int!
@@ -27,8 +28,9 @@ export const SAVE_RSVP = gql`
       specialFood: $specialFood
       foodAllergy: $foodAllergy
     ) {
-      email
-      username
+      rsvp {
+        response
+      }
     }
   }
 `;
