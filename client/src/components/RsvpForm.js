@@ -53,7 +53,7 @@ const RsvpForm = () => {
         });
       } catch (e) {
         console.error(e);
-      }  
+      }
     },
   });
 
@@ -124,14 +124,13 @@ const RsvpForm = () => {
         setGuestSpecialFood("None");
       }
     }
-    if(e.target.name === "response"){
-    setGuestResponse(e.target.value);
-  }
+    if (e.target.name === "response") {
+      setGuestResponse(e.target.value);
+    }
 
-  if(e.target.name === "specialFood"){
-    setGuestSpecialFood(e.target.value);
-  }
-
+    if (e.target.name === "specialFood") {
+      setGuestSpecialFood(e.target.value);
+    }
 
     if (e.target.name === "foodAllergy") {
       setGuestFoodAllergy(e.target.value);
@@ -169,7 +168,7 @@ const RsvpForm = () => {
         },
       });
 
-      console.log("DATA", data)
+      console.log("DATA", data);
       // let lsRSVP = {username: data.saveRsvp.username, email: data.saveRsvp.email, response: guestResponse,
       //   guests: numGuests,
       //   children: numChildren,
@@ -342,9 +341,7 @@ const RsvpForm = () => {
         ></textarea>
       </div>
       <div className="col-12 formGroup formSubmit">
-        <button className="btn">
-          {success ? "RSVP Sent" : "Send RSVP"}
-        </button>
+        <button className="btn">{success ? "RSVP Sent" : "Send RSVP"}</button>
       </div>
     </motion.form>
   );

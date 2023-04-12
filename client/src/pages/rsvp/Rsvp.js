@@ -11,7 +11,7 @@ const Rsvp = () => {
 
   const userData = data?.me || {};
 
-  console.log("RSVP...", userData)
+  console.log("RSVP...", userData);
 
   return (
     <section className="contact">
