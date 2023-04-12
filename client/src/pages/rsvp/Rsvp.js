@@ -1,5 +1,4 @@
 import PageHeader from "../../components/PageHeader";
-import SocialIcons from "../../components/SocialIcons";
 import RsvpForm from "../../components/RsvpForm";
 import RsvpInfo from "../../components/RsvpInfo";
 
@@ -31,7 +30,6 @@ const Rsvp = () => {
           </div>
         </div>
       </div>
-      <SocialIcons />
     </section>
   );
 };

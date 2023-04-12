@@ -166,23 +166,18 @@ const RsvpForm = () => {
           children: numChildren,
           specialFood: guestSpecialFood,
           foodAllergy: guestFoodAllergy,
-          response: guestResponse,
-          guests: numGuests,
-          children: numChildren,
-          specialFood: guestSpecialFood,
-          foodAllergy: guestFoodAllergy,
         },
       });
 
       console.log("DATA", data)
-      let lsRSVP = {username: data.saveRsvp.username, email: data.saveRsvp.email, response: guestResponse,
-        guests: numGuests,
-        children: numChildren,
-        specialFood: guestSpecialFood,
-        foodAllergy: guestFoodAllergy}
-      localStorage.setItem("rsvp", JSON.stringify(lsRSVP));
-      let temp = localStorage.getItem("rsvp");
-      console.log("%%%", temp)
+      // let lsRSVP = {username: data.saveRsvp.username, email: data.saveRsvp.email, response: guestResponse,
+      //   guests: numGuests,
+      //   children: numChildren,
+      //   specialFood: guestSpecialFood,
+      //   foodAllergy: guestFoodAllergy}
+      // localStorage.setItem("rsvp", JSON.stringify(lsRSVP));
+      // let temp = localStorage.getItem("rsvp");
+      // console.log("%%%", temp)
     } catch (err) {
       console.error(err);
     }
