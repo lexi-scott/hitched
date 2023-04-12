@@ -51,13 +51,12 @@ export function AddComment({ postId }) {
           commentAuthor: auth.getProfile().data.username,
         },
       });
-
-      setCommentForm({
-        commentText: "",
-      });
     } catch (err) {
       console.error(err);
     }
+    setCommentForm({
+      commentText: "",
+    });
   };
 
   return (
@@ -66,6 +65,7 @@ export function AddComment({ postId }) {
         <Form.Control
           placeholder="enter comment here..."
           onChange={handleChange}
+          value={commentForm.commentText}
         />
         <Button variant="primary" type="submit" onClick={handleSubmit}>
           Submit
