@@ -10,7 +10,7 @@ const Rsvp = () => {
 
   const userData = data?.me || data?.user || {};
 
-  console.log(userData);
+  console.log(data);
 
   return (
     <section className="contact">
