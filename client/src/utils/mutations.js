@@ -27,8 +27,8 @@ export const SAVE_RSVP = gql`
       specialFood: $specialFood
       foodAllergy: $foodAllergy
     ) {
-      email
       username
+      email
     }
   }
 `;

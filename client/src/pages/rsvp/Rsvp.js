@@ -5,12 +5,13 @@ import RsvpInfo from "../../components/RsvpInfo";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_ME } from "../../utils/queries";
+
 const Rsvp = () => {
   const { data } = useQuery(QUERY_ME);
 
-  const userData = data?.me || data?.user || {};
+  const userData = data?.me || {};
 
-  console.log(data);
+  console.log("RSVP...", userData);
 
   return (
     <section className="contact">
