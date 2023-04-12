@@ -40,9 +40,9 @@ function App() {
     location: "Napa, CA",
     tagline: "Say Yes on October 10, 2023",
     email: "daveandbustermarried@mail.com",
-    availability: "Save the Date!",
+    availability: "October 10, 2023",
     brand:
-      "We met at Subway and fell in love because the worker said they were out of mayo and both of us got so angy we decided we should spend our lives together being miserable!!",
+      "We are so in love and can't wait to share our day with you. More information about our relationship with great anecdotes!",
   };
 
   return (

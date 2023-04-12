@@ -1,5 +1,5 @@
 import NavLinks from "./NavLinks";
-import logo from "../images/logo.jpg";
+import logo from "../images/DBLogo.png";
 import Auth from "../utils/auth"
 import Login from "../Login";
 import { Link } from "react-router-dom";

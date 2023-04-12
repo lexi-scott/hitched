@@ -52,7 +52,6 @@ const Login = (props) => {
             {data ? (
               <p>
                 Success! You may now head{" "}
-                <Link to="/">back to the Social page.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
