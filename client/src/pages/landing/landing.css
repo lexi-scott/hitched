@@ -2,7 +2,9 @@
 
 .landing .name {
   font-size: 48px;
+  font-family: lemon;
 }
+
 .landing .description {
   font-size: 26px;
   color: var(--text-color)

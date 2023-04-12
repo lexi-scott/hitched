@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Nav, Modal, Tab } from "react-bootstrap";
 import openMenu from "../images/open.svg";
 import closeMenu from "../images/close.svg";
-import Login from "../Login";
+import Login from "./Login";
 import Auth from "../utils/auth";
 
 const NavLinks = () => {
