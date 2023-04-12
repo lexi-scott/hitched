@@ -1,19 +1,27 @@
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
-const RsvpInfo = ({ rsvp, email, name }) => {
+import { useQuery } from "@apollo/client";
+
+import { QUERY_ME } from "../utils/queries";
+
+const RsvpInfo = ({ name, email, rsvp }) => {
+
+  // const { data } = useQuery(QUERY_ME);
+
+  // const userData = data?.me || data?.User || {};
+
+  // console.log("**RSVPINFO", data);
+
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true,
   });
 
-  if (!rsvp) {
-    return <h1>Loading</h1>;
-  }
+  if(!rsvp)
+  return <h4>Loading...</h4>;
 
-  const { response, guests, children, specialFood, foodAllergy } = rsvp;
-
-  console.log(response, guests, children, specialFood, foodAllergy);
+  const {response, guests, children, specialFood, foodAllergy} = rsvp;
 
   return (
     <motion.div

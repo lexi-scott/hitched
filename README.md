@@ -12,6 +12,8 @@ A website hosted by the bride and groom where guests sign in using their email. 
 
  [Demo](#Demo)
 
+ [Development] (#Development)
+
 
 ## Installation
 The app is deployed using heroku. 
@@ -25,4 +27,4 @@ Wedding guests will get an email to a website link and sign in using their email
 
 ## Demo
 
-
+## Development
