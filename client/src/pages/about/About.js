@@ -3,7 +3,11 @@ import PageHeader from "../../components/PageHeader";
 import auth from "../../utils/auth";
 const About = ({ name, location, brand, email, availability }) => {
   if (!auth.loggedIn()) {
-    window.location.replace("/");
+    return (
+      <h1 className="d-flex flex-row justify-content-center">
+        Access Denied!, please log in{" "}
+      </h1>
+    );
   }
 
   return (

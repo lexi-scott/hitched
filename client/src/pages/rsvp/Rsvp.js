@@ -1,21 +1,24 @@
 import PageHeader from "../../components/PageHeader";
 import RsvpForm from "../../components/RsvpForm";
 import RsvpInfo from "../../components/RsvpInfo";
-import auth from "../../utils/auth";
+import Login from "../../Login";
 import { useQuery } from "@apollo/client";
-
+import auth from "../../utils/auth";
 import { QUERY_ME } from "../../utils/queries";
 
 const Rsvp = () => {
-  if (!auth.loggedIn()) {
-    window.location.replace("/");
-  }
-
   const { data } = useQuery(QUERY_ME);
 
   const userData = data?.me || {};
 
   console.log("RSVP...", userData);
+  if (!auth.loggedIn()) {
+    return (
+      <h1 className="d-flex flex-row justify-content-center">
+        Access Denied!, please log in{" "}
+      </h1>
+    );
+  }
 
   return (
     <section className="contact">
