@@ -19,7 +19,7 @@ const RsvpInfo = ({ name, email, rsvp }) => {
   });
 
   if(!rsvp)
-  return <h4>Loading...</h4>;
+  return <h4>Get started with your response...</h4>;
 
   const {response, guests, children, specialFood, foodAllergy} = rsvp;
 

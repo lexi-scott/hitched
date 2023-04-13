@@ -5,6 +5,8 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    weddingparty: Boolean
+    couple: Boolean
     posts: [Post]
     registryItem: String
     rsvp: Rsvp

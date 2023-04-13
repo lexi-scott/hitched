@@ -22,6 +22,8 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      weddingparty
+      couple
       rsvp {
         response
         guests
