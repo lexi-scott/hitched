@@ -4,6 +4,8 @@ import About from "../pages/about/About";
 import Registry from "../pages/registry/Registry";
 import Rsvp from "../pages/rsvp/Rsvp";
 import Social from "../pages/social/Social";
+import auth from "../utils/auth";
+import ErrorLogIn from "../pages/ErrorLogin";
 
 const AnimatedRoutes = ({ personalDetails }) => {
   const location = useLocation();
@@ -33,7 +35,8 @@ const AnimatedRoutes = ({ personalDetails }) => {
       />
       <Route path="/rsvp" element={<Rsvp />} />
       <Route path="/registry" element={<Registry />} />
-      <Route path="/social" element={<Social />}/>
+      <Route path="/social" element={<Social />} />
+      <Route path="/errorLogin" element={<ErrorLogIn />} />
     </Routes>
   );
 };

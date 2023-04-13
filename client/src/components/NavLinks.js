@@ -11,6 +11,7 @@ const NavLinks = () => {
   // console.log(logged)
   const [showModal, setShowModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <>
       <button

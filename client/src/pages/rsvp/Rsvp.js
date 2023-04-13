@@ -1,12 +1,16 @@
 import PageHeader from "../../components/PageHeader";
 import RsvpForm from "../../components/RsvpForm";
 import RsvpInfo from "../../components/RsvpInfo";
-
+import auth from "../../utils/auth";
 import { useQuery } from "@apollo/client";
 
 import { QUERY_ME } from "../../utils/queries";
 
 const Rsvp = () => {
+  if (!auth.loggedIn()) {
+    window.location.replace("/");
+  }
+
   const { data } = useQuery(QUERY_ME);
 
   const userData = data?.me || {};

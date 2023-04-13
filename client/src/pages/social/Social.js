@@ -5,12 +5,15 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/esm/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-
+import auth from "../../utils/auth";
 import { QUERY_POSTS } from "../../utils/queries";
 import SocialForm from "./SocialForm";
 import { AddComment } from "./AddComment";
 
 export default function Social() {
+  if (!auth.loggedIn()) {
+    window.location.replace("/");
+  }
   const { data, loading, error } = useQuery(QUERY_POSTS);
   //GETTING ALL THE DATA FROM POST
   const postData = data?.posts || [];

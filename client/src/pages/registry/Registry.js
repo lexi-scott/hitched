@@ -1,9 +1,12 @@
 import registryData from "./registryData.json";
 import Gift from "../../components/Gift";
 import PageHeader from "../../components/PageHeader";
-import RegistryLinks from "../../components/RegistryLinks"
-
+import RegistryLinks from "../../components/RegistryLinks";
+import auth from "../../utils/auth";
 const Portfolio = () => {
+  if (!auth.loggedIn()) {
+    window.location.replace("/");
+  }
   const GiftList = () =>
     registryData.map((registry, i) => (
       <Gift
@@ -19,13 +22,12 @@ const Portfolio = () => {
       />
     ));
 
-
   return (
     <section className="portfolio">
       <PageHeader title="Registry" description="Thank you for viewing our" />
       <div className="row">
         <GiftList />
-        <RegistryLinks/>
+        <RegistryLinks />
       </div>
     </section>
   );
