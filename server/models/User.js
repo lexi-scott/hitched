@@ -18,10 +18,12 @@ const userSchema = new Schema(
       unique: true,
       match: [/.+@.+\..+/, "Must use a valid email address"],
     },
-    // password: {
-    //   type: String,
-    //   required: true,
-    // },
+    weddingparty: {
+      type: Boolean,
+    },
+    couple: {
+      type: Boolean,
+    },
     // set rsvp to be a data that adheres to the rsvpSchema
     rsvp: rsvpSchema,
     //save registry item this user selected
