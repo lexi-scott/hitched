@@ -18,6 +18,7 @@ const NavLinks = () => {
 
   const logged = Auth.loggedIn();
   // console.log(logged)
+
   const [showModal, setShowModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
@@ -40,7 +41,7 @@ const NavLinks = () => {
           <>
             {userData.couple ?
               <>
-                <NavLink to="/rsvp" onClick={() => setIsMenuOpen(false)}>
+                <NavLink to="/dashboard" onClick={() => setIsMenuOpen(false)}>
                   Dashboard
                 </NavLink>
                 <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
@@ -60,7 +61,7 @@ const NavLinks = () => {
                 </NavLink>
                 {userData.weddingparty ?
                   <>
-                    <NavLink to="/social" onClick={() => setIsMenuOpen(false)}> Reception </NavLink>
+                    <NavLink to="/reception" onClick={() => setIsMenuOpen(false)}> Reception </NavLink>
                     <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
                   </> : <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>}
               </>}
