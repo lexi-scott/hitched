@@ -9,6 +9,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { QUERY_POSTS } from "../../utils/queries";
 import SocialForm from "./SocialForm";
 import { AddComment } from "./AddComment";
+import auth from "../../utils/auth";
 
 export default function Social() {
   const { data, loading, error } = useQuery(QUERY_POSTS);
@@ -16,8 +17,15 @@ export default function Social() {
   const postData = data?.posts || [];
 
   console.log(postData);
+  if (!auth.loggedIn()) {
+    return <h1 className="d-flex flex-row justify-content-center">Access Denied!, please log in </h1>
+  }
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
 
   console.log(postData);
 
