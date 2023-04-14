@@ -6,6 +6,13 @@ export const QUERY_USERS = gql`
       _id
       username
       email
+      rsvp {
+        response
+        guests
+        children
+        specialFood
+        foodAllergy
+      }
       posts {
         _id
         content

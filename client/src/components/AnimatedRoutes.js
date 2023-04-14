@@ -7,7 +7,6 @@ import Social from "../pages/social/Social";
 import Reception from "../pages/reception/Reception";
 import Dashboard from "../pages/dashboard/Dasboard";
 import auth from "../utils/auth";
-import ErrorLogIn from "../pages/ErrorLogin";
 
 const AnimatedRoutes = ({ personalDetails }) => {
   const location = useLocation();

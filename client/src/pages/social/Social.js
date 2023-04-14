@@ -9,26 +9,36 @@ import auth from "../../utils/auth";
 import { QUERY_POSTS } from "../../utils/queries";
 import SocialForm from "./SocialForm";
 import { AddComment } from "./AddComment";
-import auth from "../../utils/auth";
 
 export default function Social() {
-  if (!auth.loggedIn()) {
-    window.location.replace("/");
-  }
   const { data, loading, error } = useQuery(QUERY_POSTS);
   //GETTING ALL THE DATA FROM POST
   const postData = data?.posts || [];
+  if (!auth.loggedIn()) {
+    return (
+      <h1 className="d-flex flex-row justify-content-center">
+        Access Denied!, please log in{" "}
+      </h1>
+    );
+  }
 
   console.log(postData);
   if (!auth.loggedIn()) {
-    return <h1 className="d-flex flex-row justify-content-center">Access Denied!, please log in </h1>
+    return (
+      <h1 className="d-flex flex-row justify-content-center">
+        Access Denied!, please log in{" "}
+      </h1>
+    );
   }
 
-  if (loading) return <div class="d-flex justify-content-center">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
+  if (loading)
+    return (
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
 
   console.log(postData);
 

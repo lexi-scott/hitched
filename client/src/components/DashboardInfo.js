@@ -1,18 +1,14 @@
-
 import aboutMeImg from "../images/d&B.png";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
 
-
 const DashboardInfo = ({ name, email, location, availability, brand }) => {
   const [ref, inView] = useInView({
     threshold: 0.2,
-    
+
     triggerOnce: true,
   });
-
-  
 
   return (
     <div className="aboutContainer container">
@@ -35,7 +31,6 @@ const DashboardInfo = ({ name, email, location, availability, brand }) => {
         >
           <div className="contentContainer">
             <h3>Under construction...</h3>
-            
           </div>
         </motion.div>
       </div>

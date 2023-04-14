@@ -40,13 +40,14 @@ const NavLinks = () => {
         </NavLink>
         {Auth.loggedIn() ? (
           <>
-            {userData.couple ?
+            {userData.couple ? (
               <>
                 <NavLink to="/dashboard" onClick={() => setIsMenuOpen(false)}>
                   Dashboard
                 </NavLink>
                 <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
-              </> :
+              </>
+            ) : (
               <>
                 <NavLink to="/rsvp" onClick={() => setIsMenuOpen(false)}>
                   RSVP
@@ -60,12 +61,22 @@ const NavLinks = () => {
                 <NavLink to="/social" onClick={() => setIsMenuOpen(false)}>
                   Social
                 </NavLink>
-                {userData.weddingparty ?
+                {userData.weddingparty ? (
                   <>
-                    <NavLink to="/reception" onClick={() => setIsMenuOpen(false)}> Reception </NavLink>
+                    <NavLink
+                      to="/reception"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {" "}
+                      Reception{" "}
+                    </NavLink>
                     <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
-                  </> : <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>}
-              </>}
+                  </>
+                ) : (
+                  <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
+                )}
+              </>
+            )}
           </>
         ) : (
           <NavLink onClick={() => setShowModal(true)}>Login</NavLink>
