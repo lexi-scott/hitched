@@ -1,7 +1,7 @@
 import PageHeader from "../../components/PageHeader";
 import RsvpForm from "../../components/RsvpForm";
 import RsvpInfo from "../../components/RsvpInfo";
-import Login from "../../Login"
+// import Login from "../../Login"
 import { useQuery } from "@apollo/client";
 import auth from "../../utils/auth";
 import { QUERY_ME } from "../../utils/queries";

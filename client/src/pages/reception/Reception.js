@@ -6,6 +6,7 @@ const Reception = ({ name, location, brand, email, availability }) => {
     <section className="about">
       <PageHeader title="Reception" description="Let's keep the party going!!" />
       <ReceptionInfo name={name} location={location} brand={brand} email={email} availability={availability} />
+
     </section>
   );
 };
