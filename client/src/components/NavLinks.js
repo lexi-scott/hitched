@@ -5,10 +5,20 @@ import openMenu from "../images/open.svg";
 import closeMenu from "../images/close.svg";
 import Login from "./Login";
 import Auth from "../utils/auth";
+import { useQuery } from "@apollo/client";
+
+import { QUERY_ME } from "../utils/queries";
 
 const NavLinks = () => {
+  const { data } = useQuery(QUERY_ME);
+
+  const userData = data?.me || data?.User || {};
+
+  console.log("**NAV", userData);
+
   const logged = Auth.loggedIn();
   // console.log(logged)
+
   const [showModal, setShowModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
@@ -29,19 +39,32 @@ const NavLinks = () => {
         </NavLink>
         {Auth.loggedIn() ? (
           <>
-            <NavLink to="/rsvp" onClick={() => setIsMenuOpen(false)}>
-              RSVP
-            </NavLink>
-            <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
-              About
-            </NavLink>
-            <NavLink to="/registry" onClick={() => setIsMenuOpen(false)}>
-              Registry
-            </NavLink>
-            <NavLink to="/social" onClick={() => setIsMenuOpen(false)}>
-              Social
-            </NavLink>
-            <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
+            {userData.couple ?
+              <>
+                <NavLink to="/dashboard" onClick={() => setIsMenuOpen(false)}>
+                  Dashboard
+                </NavLink>
+                <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
+              </> :
+              <>
+                <NavLink to="/rsvp" onClick={() => setIsMenuOpen(false)}>
+                  RSVP
+                </NavLink>
+                <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
+                  About
+                </NavLink>
+                <NavLink to="/registry" onClick={() => setIsMenuOpen(false)}>
+                  Registry
+                </NavLink>
+                <NavLink to="/social" onClick={() => setIsMenuOpen(false)}>
+                  Social
+                </NavLink>
+                {userData.weddingparty ?
+                  <>
+                    <NavLink to="/reception" onClick={() => setIsMenuOpen(false)}> Reception </NavLink>
+                    <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
+                  </> : <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>}
+              </>}
           </>
         ) : (
           <NavLink onClick={() => setShowModal(true)}>Login</NavLink>
