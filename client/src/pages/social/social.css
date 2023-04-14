@@ -21,6 +21,13 @@
   padding: 1px;
 }
 
+.delBtn {
+  width: 100%;
+  text-align: right;
+  padding: 2px;
+  cursor: pointer;
+}
+
 /* --- MEDIA QUERIES --- */
 @media (min-width: 750px) {
   .socialPost .name {

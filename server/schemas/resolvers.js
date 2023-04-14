@@ -46,6 +46,10 @@ const resolvers = {
 
       return newPost;
     },
+    deletePost: async (parent, { postId }) => {
+      await Post.findOneAndDelete({ _id: postId })
+      return Post
+    },
     addComment: async (parent, { postId, commentText, commentAuthor }) => {
       return Post.findOneAndUpdate(
         { _id: postId },
@@ -111,7 +115,7 @@ const resolvers = {
     changeRsvp: async (
       parent,
       { response, guests, children, specialFood, foodAllergy }
-    ) => {},
+    ) => { },
 
     //addRegistryItem will return user
     addRegistryItem: async (parent, { registryItem }, context) => {

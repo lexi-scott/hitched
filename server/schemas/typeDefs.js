@@ -71,7 +71,9 @@ const typeDefs = gql`
       foodAllergy: String
     ): User
     addRegistryItem(registryItem: String, userId: ID): User
+      deletePost(postId: String): Post
   }
+
 `;
 
 module.exports = typeDefs;
