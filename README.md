@@ -14,9 +14,66 @@ A website hosted by the couple getting married where guests sign in using their 
 * Uses the [react package](https://www.npmjs.com/package/react)
 * Uses the [bootstrap package](https://www.npmjs.com/package/bootstrap)
 
+## Project Structure
+.
+├── client // contains the client-side code
+│   ├── node_modules
+│   ├── public
+│   ├── src
+│   ├── package.json
+│   ├── package-lock.json
+│   └── README.md
+├── server // contains the server-side code
+│   ├── node_modules
+│   ├── public
+│   ├── src
+│   ├── package.json
+│   ├── package-lock.json
+│   └── README.md
+├── node_modules
+├── models // contains the MongoDB models
+
+├── server.js // the main server file
+├── package.json
+├── package-lock.json
+└── README.md
+
   
 ## Database Models
+**User**:
 
+* `username`: String, Required, Unique
+* `email`: String, Required, Unique, Must match a valid email address
+* `weddingparty`: Boolean
+* `couple`: Boolean
+* `rsvp`: of type nested docuement RSVPschema
+* `weddingparty`: Boolean
+* `posts`: Array of Post documents
+
+**Thought**:
+
+* `thoughtText`
+  * String
+  * Required
+  * Must be between 1 and 280 characters
+
+* `createdAt`
+  * Date
+  * Set default value to the current timestamp
+  * Use a getter method to format the timestamp on query
+
+* `username` (The user that created this thought)
+  * String
+  * Required
+
+* `reactions` (These are like replies)
+  * Array of nested documents created with the `reactionSchema`
+
+**Schema Settings**:
+
+A virtual called `reactionCount` is provided that retrieves the length of the thought's `reactions` array field on query.
+
+---
 
 ## Installation
 
