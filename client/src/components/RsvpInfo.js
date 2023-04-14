@@ -1,8 +1,6 @@
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
-
 import { useQuery } from "@apollo/client";
-
 import { QUERY_ME } from "../utils/queries";
 
 const RsvpInfo = ({ name, email, rsvp }) => {
