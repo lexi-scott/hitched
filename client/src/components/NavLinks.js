@@ -52,9 +52,9 @@ const NavLinks = () => {
                 <NavLink to="/rsvp" onClick={() => setIsMenuOpen(false)}>
                   RSVP
                 </NavLink>
-                <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
+                 <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
                   About
-                </NavLink>
+                </NavLink> 
                 <NavLink to="/registry" onClick={() => setIsMenuOpen(false)}>
                   Registry
                 </NavLink>
