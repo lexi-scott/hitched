@@ -6,6 +6,15 @@ export const QUERY_USERS = gql`
       _id
       username
       email
+      weddingparty
+      couple
+      rsvp {
+        response
+        guests
+        children
+        specialFood
+        foodAllergy
+      }
       posts {
         _id
         content
@@ -31,7 +40,6 @@ export const QUERY_ME = gql`
         specialFood
         foodAllergy
       }
-      registryItem
       posts {
         content
         postAuthor
