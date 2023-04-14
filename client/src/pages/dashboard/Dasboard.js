@@ -2,6 +2,7 @@ import DashboardInfo from "../../components/DashboardInfo";
 import PageHeader from "../../components/PageHeader";
 import { QUERY_USERS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
+import auth from "../../utils/auth";
 
 const Dashboard = () => {
   const { data } = useQuery(QUERY_USERS);

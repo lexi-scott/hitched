@@ -11,18 +11,12 @@ import SocialForm from "./SocialForm";
 import { AddComment } from "./AddComment";
 
 export default function Social() {
-  const { data, loading, error } = useQuery(QUERY_POSTS);
   //GETTING ALL THE DATA FROM POST
-  const postData = data?.posts || [];
-  if (!auth.loggedIn()) {
-    return (
-      <h1 className="d-flex flex-row justify-content-center">
-        Access Denied!, please log in{" "}
-      </h1>
-    );
-  }
+  const { data, loading, error } = useQuery(QUERY_POSTS);
 
-  console.log(postData);
+  const postData = data?.posts || [];
+
+  // THIS WILL PREVENT USERS WHO ARE NOT LOGGED IN, TO HAVE ACCESS TO THE URL ENDPOINTS
   if (!auth.loggedIn()) {
     return (
       <h1 className="d-flex flex-row justify-content-center">

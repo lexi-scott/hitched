@@ -50,9 +50,7 @@ const Login = (props) => {
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
             {data ? (
-              <p>
-                Success! You may now head{" "}
-              </p>
+              <p>Success! You may now head </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input

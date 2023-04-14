@@ -6,10 +6,14 @@ import Rsvp from "../pages/rsvp/Rsvp";
 import Social from "../pages/social/Social";
 import Reception from "../pages/reception/Reception";
 import Dashboard from "../pages/dashboard/Dasboard";
-import auth from "../utils/auth";
+import { QUERY_ME } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 
 const AnimatedRoutes = ({ personalDetails }) => {
   const location = useLocation();
+
+  const { data } = useQuery(QUERY_ME);
+  console.log(data);
 
   return (
     <Routes location={location} key={location.pathname}>
