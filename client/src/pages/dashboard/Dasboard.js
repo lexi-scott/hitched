@@ -22,9 +22,6 @@ console.log(userData)
       <PageHeader title="The Couple's Dashboard" description="Here are all the pesky little details..." />
       
       <DashboardInfo userData={userData} />
-    
-
-
 
     </section>
   
