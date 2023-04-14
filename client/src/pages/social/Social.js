@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/esm/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-
+import PageHeader from "../../components/PageHeader";
 import { QUERY_POSTS } from "../../utils/queries";
 import SocialForm from "./SocialForm";
 import { AddComment } from "./AddComment";
@@ -30,15 +30,17 @@ export default function Social() {
   console.log(postData);
 
   return (
+    <section className="about">
+      <PageHeader title="Social Media" description="Our personal page for wedding" />
     <div className="container-fluid w-75 social-page d-flex flex-column ">
       <div className="d-flex mb-3">
         <SocialForm />
       </div>
       <div className="posts-container d-flex flex-column">
         {postData.length === 0 ? (
-          <h1 style={{ color: "white" }}>Looks empty in here...</h1>
+          <h1 style={{ color: "white" }}>Be the first to post something!</h1>
         ) : (
-          <Row xs={1} md={2} className="g-4 ">
+          <Row xs={1} md={2} className=" socialPost g-4 ">
             {postData.map((post) => {
               return (
                 <>
@@ -53,10 +55,10 @@ export default function Social() {
                       ) : null}
 
                       <Card.Body>
-                        <Card.Title>{post.postAuthor}</Card.Title>
-
-                        <Card.Text>{post.content}</Card.Text>
-                        <Card.Text>{post.createdAt}</Card.Text>
+                        <Card.Text 
+                        className="postText"
+                        >{post.postAuthor}: {post.content}</Card.Text>
+                        <Card.Text className="postCreate">{post.createdAt}</Card.Text>
                         <Card.Text>Comments</Card.Text>
                         <ListGroup
                           variant="flush"
@@ -68,9 +70,9 @@ export default function Social() {
                           ) : (
                             post.comments.map((comment) => {
                               return (
-                                <ListGroup.Item>
-                                  {comment.commentText} by{" "}
-                                  {comment.commentAuthor}
+                                <ListGroup.Item className="commentText">
+                                  {comment.commentAuthor}: {comment.commentText}
+                                  
                                 </ListGroup.Item>
                               );
                             })
@@ -87,5 +89,6 @@ export default function Social() {
         )}
       </div>
     </div>
+    </section>
   );
 }
