@@ -92,11 +92,11 @@ export default function SocialForm() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        New Post
+        Add Post
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
-          <Modal.Title>What's on your mind?</Modal.Title>
+          <Modal.Title>Share your thoughts and pics!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -105,7 +105,7 @@ export default function SocialForm() {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Post here</Form.Label>
+              <Form.Label>Caption</Form.Label>
               <Form.Control name="content" as="textarea" rows={3} />
             </Form.Group>
           </Form>
@@ -135,10 +135,10 @@ export default function SocialForm() {
                   onClick={onImageUpload}
                   {...dragProps}
                 >
-                  Click or Drop here
+                  Add Image
                 </Button>
                 &nbsp;
-                <Button onClick={onImageRemoveAll}>Remove all images</Button>
+                <Button onClick={onImageRemoveAll}>Remove image</Button>
                 {imageList.map((image, index) => (
                   <div key={index} className="image-item">
                     <img
@@ -148,7 +148,7 @@ export default function SocialForm() {
                     />
                     <div className="image-item__btn-wrapper">
                       <Button onClick={() => onImageUpdate(index)}>
-                        Update
+                        Change
                       </Button>
                       <Button onClick={() => onImageRemove(index)}>
                         Remove
@@ -163,7 +163,7 @@ export default function SocialForm() {
 
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Delete
           </Button>
           <Button variant="primary" onClick={handleSubmit} type="submit">
             Post

@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-// const styles = {
-//   ul: {
-//     columnCount: 7,
-//   }
-// }
+//Thius page displays a table for all the guest and their RSVP status
 
 const DashboardInfo = ({ userData }) => {
   console.log(userData);
@@ -19,15 +15,6 @@ const DashboardInfo = ({ userData }) => {
   return (
     <div className="aboutContainer container">
       <div className="row">
-        {/* <motion.div
-          className="personalImage col-12 col-lg-4"
-          ref={ref}
-          initial={{ x: "-10vw", opacity: 0 }}
-          animate={inView ? { x: 0, opacity: 1 } : { x: "-10vw", opacity: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-        >
-          <img src={aboutMeImg} alt={name} />
-        </motion.div> */}
         <motion.div
           className="personalInfo col-12 col-lg-8"
           ref={ref}
@@ -35,42 +22,70 @@ const DashboardInfo = ({ userData }) => {
           animate={inView ? { x: 0, opacity: 1 } : { x: "10vw", opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
-          <div className="contentContainer">
-            <div>
-              <div className="column">
-                Guest
-                <ul className="list-group">
-                  {console.log(50, userData)}
-
-                  {userData.map((item) => (
-                    <li className="list-group-item" key={item.id}>
-                      {item.username}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="column">
-                Email
-                <ul className="list-group">
-                  {userData.map((item) => (
-                    <li className="list-group-item" key={item.id}>
-                      {item.email}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="column">Attending</div>
-
-              <div className="column">Adults</div>
-
-              <div className="column">Children</div>
-
-              <div className="column">Diet</div>
-
-              <div className="column">Allergy</div>
-            </div>
+          <div
+            className="contentContainer flex"
+            style={{
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <table
+              id="guests_table"
+              className="table table-striped table-bordered"
+              style={{
+                width: "100%",
+                backgroundColor: "rgba(255, 255, 255, 0.513)",
+                borderRadius: "3px",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <thead>
+                <th>Guest</th>
+                <th>Email</th>
+                <th>Wedding Party</th>
+                <th>RSVP Response</th>
+                <th>No. of Guests</th>
+                <th>No. of Children</th>
+                <th>Special Food</th>
+                <th>Food Allergy</th>
+              </thead>
+              <tbody>
+                {userData.map((item) => (
+                  <>
+                    {item.couple ? (
+                      <>
+                        <tr></tr>
+                      </>
+                    ) : (
+                      <tr>
+                        <td>{item.username}</td>
+                        <td>{item.email}</td>
+                        {item.weddingparty ? <td>Yes</td> : <td>No</td>}
+                        {item.rsvp ? (
+                          <>
+                            <td>{item.rsvp.response}</td>
+                            <td>{item.rsvp.guests}</td>
+                            <td>{item.rsvp.children}</td>
+                            <td>{item.rsvp.specialFood}</td>
+                            <td>{item.rsvp.foodAllergy}</td>
+                          </>
+                        ) : (
+                          <>
+                            <td>No</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                          </>
+                        )}
+                      </tr>
+                    )}
+                  </>
+                ))}
+              </tbody>
+            </table>
           </div>
         </motion.div>
       </div>

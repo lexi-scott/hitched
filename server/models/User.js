@@ -18,18 +18,16 @@ const userSchema = new Schema(
       unique: true,
       match: [/.+@.+\..+/, "Must use a valid email address"],
     },
+    //if a user is part of the wedding party
     weddingparty: {
       type: Boolean,
     },
+    //if the user is the couple getting married
     couple: {
       type: Boolean,
     },
     // set rsvp to be a data that adheres to the rsvpSchema
     rsvp: rsvpSchema,
-    //save registry item this user selected
-    registryItem: {
-      type: String,
-    },
     //Added posts array
     posts: [
       {
@@ -46,26 +44,6 @@ const userSchema = new Schema(
   }
 );
 
-// // hash user password
-// userSchema.pre("save", async function (next) {
-//   if (this.isNew || this.isModified("password")) {
-//     const saltRounds = 10;
-//     this.password = await bcrypt.hash(this.password, saltRounds);
-//   }
-
-//   next();
-// });
-
-// custom method to compare and validate password for logging in
-//changed to test password
-// userSchema.methods.isCorrectPassword = async function (password) {
-//   return bcrypt.compare(password, this.password);
-// };
-
-// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
-// userSchema.virtual('bookCount').get(function () {
-//   return this.savedBooks.length;
-// });
 
 const User = model("User", userSchema);
 

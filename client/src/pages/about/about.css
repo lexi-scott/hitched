@@ -90,12 +90,12 @@
   margin-bottom: var(--sm-spacing);
 }
 
-.about .socialIcons .icon {
+.about .icon {
   display: none;
 }
 
 @media (min-width: 750px) {
-  .about .socialIcons .icon {
+  .about .icon {
     display: inline;
   }
 

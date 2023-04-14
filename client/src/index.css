@@ -5,6 +5,11 @@
   src: url(./fonts/Rubik-Regular.ttf);
 }
 
+@font-face {
+  font-family: lemon;
+  src: url(./fonts/LemonMilkLight-owxMq.otf);
+}
+
 /* --- VARIABLES --- */
 :root {
   --bg-color: #eaf1de;
@@ -60,6 +65,7 @@ body {
   font-size: 36px;
   border-bottom: 3px solid var(--hl-color);
   margin-bottom: var(--spacing);
+  font-family: lemon;
 }
 
 .description {
@@ -80,6 +86,10 @@ body {
   color: var(--hl-color);
 }
 
+.socialPost {
+  max-width: 750px;
+}
+
 .btn {
   color: #f9f9f9;
   background-color: var(--hover-color);
@@ -89,6 +99,7 @@ body {
   border-radius: 20px;
   margin-top: 10px;
   cursor: pointer;
+  font-family: lemon;
 }
 
 .btn:hover {
@@ -132,6 +143,7 @@ header {
   padding: 20px 0;
   position: relative;
   white-space: nowrap;
+  font-family: lemon;
 }
 
 .links a:hover {
