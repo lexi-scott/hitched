@@ -15,6 +15,8 @@ import { useMutation } from "@apollo/client";
 import { DELETE_POST } from "../../utils/mutations";
 import Like from "./Like";
 
+
+
 export default function Social() {
 
   const { data, loading, error } = useQuery(QUERY_POSTS);
@@ -106,8 +108,11 @@ export default function Social() {
                               })
                             )}
                           </ListGroup>
-                          <Card.Text>{post.likes.length} likes</Card.Text>
 
+                          <Card.Text>{post.likes.length} likes</Card.Text>
+                          {/* {post.likes ? post.likes.map((like) => {
+                            return <ListGroup.Item>{like.name}</ListGroup.Item>
+                          }) : null} */}
                           <AddComment postId={post._id} postLikes={post.likes} />
 
                           <Like postInfo={post} />
