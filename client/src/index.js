@@ -7,6 +7,8 @@ import "./pages/about/about.css";
 import "./pages/registry/registry.css";
 import "./pages/rsvp/rsvp.css";
 import "./pages/social/social.css";
+import "./pages/reception/reception.css";
+import "./pages/dashboard/dashboard.css"
 
 import App from "./App";
 
