@@ -17,7 +17,7 @@ const RsvpInfo = ({ name, email, rsvp }) => {
   });
 
   if(!rsvp)
-  return <h4>Get started with your response...</h4>;
+  return <h4>Please input number of guests</h4>;
 
   const {response, guests, children, specialFood, foodAllergy} = rsvp;
 
@@ -29,8 +29,8 @@ const RsvpInfo = ({ name, email, rsvp }) => {
       animate={inView ? { x: 0, opacity: 1 } : { x: "10vw", opacity: 0 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
     >
-      <h4 className="contentTitle">Here is what you responded with...</h4>
-      <p className="infoDescription">Your information</p>
+      <h4 className="contentTitle">Your RSVP</h4>
+      {/* <p className="infoDescription">Your information</p> */}
       <ul className="listInfo">
         <li>
           <div className="personalContactInfo">

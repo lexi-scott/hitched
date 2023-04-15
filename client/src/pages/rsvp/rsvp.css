@@ -56,10 +56,10 @@ ul {
   width: 100%;
   padding: 10px 10px;
   border: none;
-  background-color: #161616;
+  background-color: white;
   margin-bottom: 20px;
   border-bottom: 1px solid var(--grey);
-  border-radius: 1px;
+  border-radius: 5px;
   outline: transparent;
   color: #9f9f9f;
 }
@@ -71,7 +71,6 @@ ul {
 textarea {
   resize: none;
   height: auto;
-  font-family: "Poppins", sans-serif;
 }
 
 .icon {
@@ -100,6 +99,20 @@ textarea {
 
 .contact .socialIcons {
   display: none;
+}
+
+.controlBtn {
+  border-radius: 10px;
+  background-color:#9f9f9f
+}
+
+label {
+  display: inline;
+  padding-left: 10px;
+}
+
+.rsvpBtnContainer {
+  padding-left: 15px;
 }
 
 .mediaWrap a:hover {

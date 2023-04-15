@@ -192,7 +192,7 @@ const RsvpForm = () => {
       transition={{ duration: 0.4, ease: "easeInOut" }}
       onSubmit={handleSubmit}
     >
-      <h4 className="contentTitle">Let us know your plans...</h4>
+      <h4 className="contentTitle">Let's get those details</h4>
       <div className="col-12 formGroup">
         <label style={{ color: "#649c85" }}>Will you be joining us?</label>
         <div
@@ -201,32 +201,32 @@ const RsvpForm = () => {
         >
           <label style={{ color: "#649c85", marginRight: "10px" }}>
             <input
-              type="radio"
+              type="checkbox"
               value="Yes"
               name="response"
               style={{ margin: "10px 0" }}
-              defaultChecked
             />{" "}
-            Yes
+            Sure Thing!
           </label>
           <label style={{ color: "#649c85" }}>
             <input
-              type="radio"
+              type="checkbox"
               value="No"
               name="response"
               style={{ margin: "10px 0" }}
             />{" "}
-            No
+            Sadly, No
           </label>
         </div>
       </div>
+      <br></br>
       <div
         className="col-12 col-md-6 formGroup"
         style={{ display: "inline-block" }}
       >
         <label style={{ color: "#649c85" }}>Number of Guests:</label>
 
-        <div className="btnContainer">
+        <div className="btnContainer rsvpBtnContainer">
           <button
             className="controlBtn"
             name="guests"
@@ -261,7 +261,7 @@ const RsvpForm = () => {
         style={{ display: "inline-block" }}
       >
         <label style={{ color: "#649c85" }}>Number of Children:</label>
-        <div className="btnContainer">
+        <div className="btnContainer rsvpBtnContainer">
           <button
             className="controlBtn"
             name="children"
@@ -291,23 +291,23 @@ const RsvpForm = () => {
           </button>
         </div>
       </div>
-      <div className="col-12 formGroup" style={{ marginTop: "20px" }}>
+      <div className="col-12 formGroup form-check form-switch" style={{ marginTop: "20px" }}>
         <label style={{ color: "#649c85" }}>
           Please choose your special meal preference:
         </label>
-        <div onChange={onChangeValue} style={{ display: "inline-block" }}>
-          <label style={{ color: "#649c85", marginRight: "10px" }}>
-            <input
-              type="radio"
+        <div className="form-check form-swtich" onChange={onChangeValue} style={{ display: "inline-block" }}>
+            <input className="mealCheck"
+              type="checkbox"
               value="Vegetarian"
               name="specialFood"
               style={{ margin: "10px 0" }}
             />
-            Vegetarian
+          <label style={{ color: "#649c85", marginRight: "10px" }}>
+             Vegetarian
           </label>
           <label style={{ color: "#649c85", marginRight: "10px" }}>
-            <input
-              type="radio"
+            <input className="mealCheck"
+              type="checkbox"
               value="Vegan"
               name="specialFood"
               style={{ margin: "10px 0" }}
@@ -315,19 +315,18 @@ const RsvpForm = () => {
             Vegan
           </label>
           <label style={{ color: "#649c85" }}>
-            <input
-              type="radio"
+            <input className="mealCheck"
+              type="checkbox"
               value="None"
               name="specialFood"
-              style={{ margin: "10px 0" }}
-              defaultChecked
+              style={{ margin: "10px 0",  }}
             />{" "}
             None
           </label>
         </div>
       </div>
       <div className="col-12 formGroup">
-        <label style={{ color: "#649c85" }}>
+        <label style={{ color: "#649c85"}}>
           Please let us know of any food allergies:
         </label>
         <textarea
@@ -336,7 +335,7 @@ const RsvpForm = () => {
           value={guestFoodAllergy}
           name="foodAllergy"
           id="allergy"
-          rows="5"
+          rows="2"
           placeholder="None"
         ></textarea>
       </div>
