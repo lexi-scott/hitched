@@ -100,3 +100,12 @@ export const DELETE_POST = gql`
     }
   }
 `
+
+export const ADD_LIKE = gql`
+  mutation addLike($postId: String!) {
+    addLike(postId: $postId) {
+      content
+      postAuthor
+    }
+  }
+`

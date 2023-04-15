@@ -13,6 +13,7 @@ import auth from "../../utils/auth";
 import Button from 'react-bootstrap/Button'
 import { useMutation } from "@apollo/client";
 import { DELETE_POST } from "../../utils/mutations";
+import Like from "./Like";
 
 export default function Social() {
 
@@ -21,7 +22,6 @@ export default function Social() {
   const [deletePost] = useMutation(DELETE_POST)
   //GETTING ALL THE DATA FROM POST
   const postData = data?.posts || [];
-
   console.log(postData);
   if (!auth.loggedIn()) {
     return <h1 className="d-flex flex-row justify-content-center">Access Denied!, please log in </h1>
@@ -52,6 +52,7 @@ export default function Social() {
 
 
   }
+
 
   return (
     <section className="about">
@@ -85,6 +86,7 @@ export default function Social() {
                             className="postText"
                           >{post.postAuthor}: {post.content}</Card.Text>
                           <Card.Text className="postCreate">{post.createdAt}</Card.Text>
+
                           <Card.Text>Comments</Card.Text>
                           <ListGroup
                             variant="flush"
@@ -104,7 +106,11 @@ export default function Social() {
                               })
                             )}
                           </ListGroup>
-                          <AddComment postId={post._id} />
+                          <Card.Text>{post.likes.length} likes</Card.Text>
+
+                          <AddComment postId={post._id} postLikes={post.likes} />
+
+                          <Like postInfo={post} />
                         </Card.Body>
 
 

@@ -126,6 +126,24 @@ const resolvers = {
       );
       return regItem;
     },
+    addLike: async (parent, { postId }, context) => {
+      if (context.user) {
+        const userInfo = context.user.username
+        console.log(userInfo)
+        const likedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $push: { likes: { name: userInfo, userId: context.user._id } } },
+          { new: true }
+        )
+        return likedPost
+      }
+
+
+      throw new AuthenticationError("You need to be logged in!");
+
+
+    }
+
   },
 };
 
