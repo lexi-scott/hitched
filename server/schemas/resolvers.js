@@ -46,6 +46,10 @@ const resolvers = {
 
       return newPost;
     },
+    deletePost: async (parent, { postId }) => {
+      await Post.findOneAndDelete({ _id: postId })
+      return Post
+    },
     addComment: async (parent, { postId, commentText, commentAuthor }) => {
       return Post.findOneAndUpdate(
         { _id: postId },
@@ -111,7 +115,7 @@ const resolvers = {
     changeRsvp: async (
       parent,
       { response, guests, children, specialFood, foodAllergy }
-    ) => {},
+    ) => { },
 
     //addRegistryItem will return user
     addRegistryItem: async (parent, { registryItem }, context) => {
@@ -122,6 +126,24 @@ const resolvers = {
       );
       return regItem;
     },
+    addLike: async (parent, { postId }, context) => {
+      if (context.user) {
+        const userInfo = context.user.username
+        console.log(userInfo)
+        const likedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $push: { likes: { name: userInfo, userId: context.user._id } } },
+          { new: true }
+        )
+        return likedPost
+      }
+
+
+      throw new AuthenticationError("You need to be logged in!");
+
+
+    }
+
   },
 };
 

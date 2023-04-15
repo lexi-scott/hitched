@@ -8,6 +8,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import Header from "./components/Header";
 import AnimatedRoutes from "./components/AnimatedRoutes";
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "/graphql",

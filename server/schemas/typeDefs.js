@@ -17,6 +17,8 @@ const typeDefs = gql`
     createdAt: String
   }
 
+ 
+
   type Post {
     _id: ID
     content: String
@@ -24,6 +26,12 @@ const typeDefs = gql`
     createdAt: String
     image: String
     comments: [Comment]
+    likes: [Like]
+  }
+
+  type Like {
+    name: String
+    userId: String
   }
 
   type Rsvp {
@@ -71,7 +79,10 @@ const typeDefs = gql`
       foodAllergy: String
     ): User
     addRegistryItem(registryItem: String, userId: ID): User
+      deletePost(postId: String): Post
+    addLike(postId: String): Post
   }
+
 `;
 
 module.exports = typeDefs;

@@ -45,6 +45,10 @@ export function AddComment({ postId }) {
       return false;
     }
 
+    if (commentForm.commentText === '') {
+      return
+    }
+
     try {
       const { data } = await addComment({
         variables: {

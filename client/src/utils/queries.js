@@ -20,6 +20,7 @@ export const QUERY_USERS = gql`
         content
         postAuthor
         image
+        likes
       }
     }
   }
@@ -41,6 +42,7 @@ export const QUERY_ME = gql`
         foodAllergy
       }
       posts {
+        likes
         content
         postAuthor
       }
@@ -56,6 +58,10 @@ export const QUERY_POSTS = gql`
       content
       image
       createdAt
+      likes {
+        name
+        userId
+      }
       comments {
         commentText
         commentAuthor

@@ -35,6 +35,7 @@ const userSchema = new Schema(
         ref: "Post",
       },
     ],
+
   },
   // set this to use virtual below
   {
