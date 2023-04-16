@@ -127,7 +127,6 @@ npm run develop
 ## Mock Up
 
 You can access the walkthrough video on Google Drive at: https://drive.google.com/file/d/1F44mhmjWhUVxhYdO4xxtvwDVVKX4Xdxo/view?usp=sharing
-OR at in the repository at ./assets/Hitched.mp4
 
 ![Screenshot of Landing page](./assets/hitched.PNG)
 ![Screenshot of RSVP page](./assets/RSVP.PNG)
