@@ -5,10 +5,10 @@ import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
 import invitation from "../pages/about/Wedding-Invitation.pdf";
 
-const AboutMe = ({ name, email, location, availability, brand}) => {
+
+const AboutMe = ({ name, email, location, availability, brand }) => {
   const [ref, inView] = useInView({
     threshold: 0.2,
-    
     triggerOnce: true,
   });
 
