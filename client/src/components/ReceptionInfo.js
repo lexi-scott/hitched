@@ -8,9 +8,16 @@ import invitation from "../pages/reception/Reception-Invitation.pdf";
 const ReceptionInfo = ({ name, email, location, availability, brand }) => {
   const [ref, inView] = useInView({
     threshold: 0.2,
-    
     triggerOnce: true,
   });
+
+const styles = {
+  text: {
+    display: "flex",
+    textAlign: "center",
+  }
+
+}
 
   const [downloading, setDownloading] = useState(false);
 
@@ -33,60 +40,99 @@ const ReceptionInfo = ({ name, email, location, availability, brand }) => {
 
   return (
     <div className="aboutContainer container">
-      <div className="row">
-        <motion.div
-          className="personalImage col-12 col-lg-4"
-          ref={ref}
-          initial={{ x: "-10vw", opacity: 0 }}
-          animate={inView ? { x: 0, opacity: 1 } : { x: "-10vw", opacity: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-        >
-          <img src={aboutMeImg} alt={name} />
-        </motion.div>
-        <motion.div
-          className="personalInfo col-12 col-lg-8"
-          ref={ref}
-          initial={{ x: "10vw", opacity: 0 }}
-          animate={inView ? { x: 0, opacity: 1 } : { x: "10vw", opacity: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
-        >
-          <div className="contentContainer">
-            <h5>To the BEST wedding party EVER!!!! </h5>
-            <h4>Come celebrate with us with food, booze and bad dance moves!!!</h4>
-            <div className="contentDescription">
-              <p>{brand}</p>
-            </div>
-            <div className="infoContainer">
-              <div className="row">
-                <div className="col-12 col-md-6 info">
-                  <span>Who are we:</span>
-                  <p>Dave & Buster</p>
-                </div>
-                <div className="col-12 col-md-6 info">
-                  <span>Email:</span>
-                  <p>
-                    <a href={`mailto:${email}`}>{email}</a>
-                  </p>
-                </div>
+      <div className="row" style={styles.text} >
+
+
+
+
+
+
+
+
+        <div className="contentContainer">
+          <h5 >To the BEST wedding party EVER!!!! </h5>
+          <h4>Come celebrate with us with food, booze and bad dance moves!!!</h4>
+          <br></br>
+          <br></br>
+
+          <div className="contentDescription">
+            <h5> Reception Dinner </h5>
+            <h5>6PM - 7:30PM</h5>
+            <br></br>
+
+            <h4> Starter </h4>
+            <p>Mini Crab Cakes with a Spicy Remoulade Sauce</p>
+            <p>Grilled Tuna Tartare with Avocado
+              and Wasabi Cream</p>
+            <p>Vegan Potato Pastry</p>
+            <br></br>
+
+            <h4> Main </h4>
+            <p>
+              <p>Grilled Swordfish with a Herb and Citrus Marinade</p>
+              <p>Vegan/Vegetarian Option: Grilled Portobello Mushroom
+              with Balsamic Glaze</p>
+            </p>
+            <br></br>
+
+            <h4> Dessert/Cake Cutting </h4>
+            <p>
+              <p>Wedding Cake</p>
+              <p>Seasonal Fruit Platter</p>
+              <p>Dairy Free Gelato</p>
+            </p>
+
+            <br></br>
+
+            <h5>Speeches</h5>
+            <h5> 7:30 - 8PM </h5>
+            <br></br>
+            <p> Father of the Bride </p>
+            <p> Best Man </p>
+            <p> Maid of Honor </p>
+
+          <br></br>
+
+          <h5>Party</h5>
+          <h5>8PM - 11PM</h5>
+          <p> Let's dance!</p>
+          </div>
+          <br></br>
+          <br></br>
+
+          <div className="infoContainer">
+            <div className="row">
+              <div className="col-12 col-md-6 info">
+                <span>Who are we:</span>
+                <p>Dave & Buster</p>
               </div>
-              <div className="row">
-                <div className="col-12 col-md-6 info">
-                  <span>Location:</span>
-                  <p>{location}</p>
-                </div>
-                <div className="col-12 col-md-6 info">
-                  <span>Date:</span>
-                  <p>{availability}</p>
-                </div>
+              <div className="col-12 col-md-6 info">
+                <span>Email:</span>
+                <p>
+                  <a href={`mailto:${email}`}>{email}</a>
+                </p>
               </div>
             </div>
-            <div className="buttonContainer">
-              <button className="btn downloadCV" onClick={handleDownload} disabled={downloading}>
-                {downloading ? "Downloading..." : "Download Invitation"}
-              </button>{" "}
+            <div className="row">
+              <div className="col-12 col-md-6 info">
+                <span>Location:</span>
+                <p>{location}</p>
+              </div>
+              <div className="col-12 col-md-6 info">
+                <span>Date:</span>
+                <p>{availability}</p>
+              </div>
             </div>
           </div>
-        </motion.div>
+          <div>
+          <div className="buttonContainer">
+            <button className="btn downloadCV" onClick={handleDownload} disabled={downloading}>
+              {downloading ? "Downloading..." : "Download Invitation"}
+            </button>{" "}
+          </div>
+          </div>
+
+        </div>
       </div>
     </div>
   );
