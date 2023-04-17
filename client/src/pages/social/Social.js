@@ -9,6 +9,7 @@ import PageHeader from "../../components/PageHeader";
 import { QUERY_POSTS } from "../../utils/queries";
 import SocialForm from "./SocialForm";
 import { AddComment } from "./AddComment";
+import auth from "../../utils/auth";
 
 export default function Social() {
   //GETTING ALL THE DATA FROM POST
@@ -46,11 +47,11 @@ export default function Social() {
         <div className="d-flex mb-3">
           <SocialForm />
         </div>
-        <div className="posts-container d-flex flex-column">
+        <div className="container d-flex justify-content-center">
           {postData.length === 0 ? (
             <h1 style={{ color: "white" }}>Be the first to post something!</h1>
           ) : (
-            <Row xs={1} md={2} className=" socialPost g-4 ">
+            <Row xs={1} md={2} className="socialPost g-5">
               {postData.map((post) => {
                 return (
                   <>

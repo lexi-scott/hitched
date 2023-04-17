@@ -20,6 +20,15 @@
   border: none;
   padding: 1px;
 }
+.socialPost {
+  border: 3px solid red;
+}
+
+.posts-container {
+  border: 3px solid blue;
+  display: flex;
+  justify-content: center;
+}
 
 /* --- MEDIA QUERIES --- */
 @media (min-width: 750px) {
