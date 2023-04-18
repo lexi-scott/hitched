@@ -6,9 +6,14 @@ import Rsvp from "../pages/rsvp/Rsvp";
 import Social from "../pages/social/Social";
 import Reception from "../pages/reception/Reception";
 import Dashboard from "../pages/dashboard/Dasboard";
+import { QUERY_ME } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 
 const AnimatedRoutes = ({ personalDetails }) => {
   const location = useLocation();
+
+  const { data } = useQuery(QUERY_ME);
+  console.log(data);
 
   return (
     <Routes location={location} key={location.pathname}>
@@ -35,7 +40,7 @@ const AnimatedRoutes = ({ personalDetails }) => {
       />
       <Route path="/rsvp" element={<Rsvp />} />
       <Route path="/registry" element={<Registry />} />
-      <Route path="/social" element={<Social />}/>
+      <Route path="/social" element={<Social />} />
       <Route
         path="/reception"
         element={
@@ -48,7 +53,7 @@ const AnimatedRoutes = ({ personalDetails }) => {
           />
         }
       />
-      <Route path="/dashboard" element={<Dashboard />}/>
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 };

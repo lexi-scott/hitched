@@ -1,17 +1,6 @@
-.social-cards {
-  border: 3px solid red;
-}
-
-.card-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 20rem;
-  height: 20rem;
-}
-
 .postCreate {
+  text-align: right;
+  padding: 0 5px;
   font-size: 12px;
 }
 
@@ -19,6 +8,14 @@
   font-size: 12px;
   border: none;
   padding: 1px;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+
+  /* border: 3px solid red; */
 }
 
 .delBtn {
@@ -29,20 +26,56 @@
 }
 
 /* --- MEDIA QUERIES --- */
-@media (min-width: 750px) {
+@media (min-width: 400px) {
   .socialPost .name {
     font-size: 70px;
-  }
-
-  .social-cards {
-    display: flex;
-    height: 500px;
-    align-items: center;
-    justify-content: center;
   }
 
   .post-image {
     width: 100%;
     height: 100%;
   }
+  .card-main {
+    width: 100%;
+  }
+}
+
+.post-image {
+  margin: 1rem auto;
+  max-width: 90%;
+  height: 80%;
+}
+.card-main {
+  width: 80%;
+  margin: 0.5rem 0;
+  /* border: 3px solid blue; */
+}
+
+.likers {
+  height: 6vh;
+  font-size: 12px;
+}
+.like-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: auto 0;
+}
+
+.postText {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.actives {
+  /* border: 3px solid green; */
+  margin-top: 1rem;
+  text-align: center;
+  min-width: 10rem;
+  height: 100%;
+}
+
+.testing {
+  /* border: 3px solid purple; */
 }

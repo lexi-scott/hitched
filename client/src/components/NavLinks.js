@@ -21,6 +21,7 @@ const NavLinks = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <>
       <button
@@ -39,7 +40,7 @@ const NavLinks = () => {
         </NavLink>
         {Auth.loggedIn() ? (
           <>
-            {userData.couple ?
+            {userData.couple ? (
               <>
                 <NavLink to="/dashboard" onClick={() => setIsMenuOpen(false)}>
                   Dashboard
@@ -48,26 +49,37 @@ const NavLinks = () => {
                   Social
                 </NavLink>
                 <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
-              </> :
+              </>
+            ) : (
               <>
                 <NavLink to="/rsvp" onClick={() => setIsMenuOpen(false)}>
                   RSVP
                 </NavLink>
-                 <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
+                <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>
                   About
-                </NavLink> 
+                </NavLink>
                 <NavLink to="/registry" onClick={() => setIsMenuOpen(false)}>
                   Registry
                 </NavLink>
                 <NavLink to="/social" onClick={() => setIsMenuOpen(false)}>
                   Social
                 </NavLink>
-                {userData.weddingparty ?
+                {userData.weddingparty ? (
                   <>
-                    <NavLink to="/reception" onClick={() => setIsMenuOpen(false)}> Reception </NavLink>
+                    <NavLink
+                      to="/reception"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {" "}
+                      Reception{" "}
+                    </NavLink>
                     <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
-                  </> : <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>}
-              </>}
+                  </>
+                ) : (
+                  <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
+                )}
+              </>
+            )}
           </>
         ) : (
           <NavLink onClick={() => setShowModal(true)}>Login</NavLink>

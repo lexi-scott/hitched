@@ -238,3 +238,7 @@ header {
     background-color: transparent;
   }
 }
+
+i {
+  cursor: pointer;
+}

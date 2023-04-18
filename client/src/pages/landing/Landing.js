@@ -14,7 +14,7 @@ const Landing = ({ name, tagline }) => {
       display: "flex",
       justifyContent: "left",
       alignItems: "center",
-      marginLeft: "30px"
+      marginLeft: "30px",
     },
 
     landingImage: {
