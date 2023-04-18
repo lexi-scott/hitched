@@ -1,0 +1,44 @@
+[
+  {
+    "username": "Brian Kernighan",
+    "email": "brian@test.com",
+    "weddingparty": false,
+    "couple": false
+  },
+  {
+    "username": "Max Kanat-Alexander",
+    "email": "maxr@test.com",
+    "weddingparty": false,
+    "couple": false
+  },
+  {
+    "username": "Wally Bean",
+    "email": "wally@test.com",
+    "weddingparty": true,
+    "couple": false
+  },
+  {
+    "username": "Kent Beck",
+    "email": "kbeck@test.com",
+    "weddingparty": false,
+    "couple": false
+  },
+  {
+    "username": "Edward V. Berard",
+    "email": "eddy@test.com",
+    "weddingparty": false,
+    "couple": false
+  },
+  {
+    "username": "Alana Kay",
+    "email": "alana@test.com",
+    "weddingparty": true,
+    "couple": false
+  },
+  {
+    "username": "Dave and Buster",
+    "email": "db@test.com",
+    "weddingparty": false,
+    "couple": true
+  }
+]
