@@ -1,4 +1,3 @@
-
 # Hitched 
 Hitched is an engaged couple's personalized wedding hub. This web application acts as a concierege for their special day.
 
