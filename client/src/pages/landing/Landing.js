@@ -8,8 +8,9 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 
-//the landing page will be the first page 
+// This landing page will be the first page that the user will see when visiting website
 const Landing = ({ name, tagline }) => {
+  
   //css styling
   const styles = {
     landing: {
@@ -27,6 +28,7 @@ const Landing = ({ name, tagline }) => {
       // mixBlendMode: "lighten",
       height: "80%",
     },
+    
     //test
     textContainer: {
       display: "flex",
@@ -60,6 +62,7 @@ const Landing = ({ name, tagline }) => {
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
   // const profile = data?.me || data?.profile || {};
 
+  //if logged in already go to this page 
   if (Auth.loggedIn() && Auth.getProfile().data._id === profileId) {
     return <Navigate to="/" />;
   }
