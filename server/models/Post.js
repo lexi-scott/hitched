@@ -8,6 +8,20 @@ const postSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
+  likes: [
+    {
+      name:
+      {
+        type: String,
+        required: true
+      },
+      userId: {
+        type: String,
+        required: true
+      }
+    }
+
+  ],
   //edited postAuthor
   postAuthor: {
     type: String,

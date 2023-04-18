@@ -9,6 +9,7 @@
 
 .aboutContainer {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   border-bottom: 1px solid var(--grey);
@@ -24,7 +25,6 @@
   z-index: 50;
   border-radius: 250px;
   border: 1px solid var(--hover-color);
-
 }
 
 .contentContainer {
@@ -45,7 +45,6 @@
 }
 
 .contentDescription {
-
   color: var(--secondary-text-color);
 }
 

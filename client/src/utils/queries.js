@@ -56,6 +56,10 @@ export const QUERY_POSTS = gql`
       content
       image
       createdAt
+      likes {
+        name
+        userId
+      }
       comments {
         commentText
         commentAuthor

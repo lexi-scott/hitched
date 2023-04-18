@@ -8,6 +8,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import Header from "./components/Header";
 import AnimatedRoutes from "./components/AnimatedRoutes";
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -35,10 +36,10 @@ const client = new ApolloClient({
 function App() {
   const personalDetails = {
     name: "Dave & Buster",
-    location: "Napa, CA",
+    location: "The Girl & the Fig, 110 W Spain St, Sonoma, CA 95476",
     tagline: "Say Yes on October 10, 2023",
     email: "daveandbustermarried@mail.com",
-    availability: "October 10, 2023",
+    availability: "October 10, 2023 6PM - 11PM",
     brand:
       "We are so in love and can't wait to share our day with you. More information about our relationship with great anecdotes!",
   };

@@ -45,6 +45,9 @@ const NavLinks = () => {
                 <NavLink to="/dashboard" onClick={() => setIsMenuOpen(false)}>
                   Dashboard
                 </NavLink>
+                <NavLink to="/social" onClick={() => setIsMenuOpen(false)}>
+                  Social
+                </NavLink>
                 <NavLink onClick={() => Auth.logout()}>Log Out</NavLink>
               </>
             ) : (

@@ -61,13 +61,13 @@ const Login = (props) => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
+                Welcome to our wedding hub{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input"
+                  className="form-input loginInput"
                   placeholder="Email"
                   name="email"
                   type="email"
