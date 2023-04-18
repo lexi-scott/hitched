@@ -1,4 +1,4 @@
-import AboutMe from "../../components/AboutMe";
+import AboutUs from "../../components/AboutUs";
 import PageHeader from "../../components/PageHeader";
 import auth from "../../utils/auth";
 const About = ({ name, location, brand, email, availability }) => {
@@ -16,7 +16,7 @@ const About = ({ name, location, brand, email, availability }) => {
         title="About Us"
         description="Thank you for learning a little more"
       />
-      <AboutMe
+      <AboutUs
         name={name}
         location={location}
         brand={brand}
