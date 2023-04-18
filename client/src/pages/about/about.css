@@ -25,7 +25,6 @@
   z-index: 50;
   border-radius: 250px;
   border: 1px solid var(--hover-color);
-
 }
 
 .contentContainer {
@@ -46,7 +45,6 @@
 }
 
 .contentDescription {
-
   color: var(--secondary-text-color);
 }
 

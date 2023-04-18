@@ -1,11 +1,15 @@
 import registryData from "./registryData.json";
 import Gift from "../../components/Gift";
 import PageHeader from "../../components/PageHeader";
-import RegistryLinks from "../../components/RegistryLinks"
+import RegistryLinks from "../../components/RegistryLinks";
 import auth from "../../utils/auth";
 const Portfolio = () => {
   if (!auth.loggedIn()) {
-    return <h1 className="d-flex flex-row justify-content-center">Access Denied!, please log in </h1>
+    return (
+      <h1 className="d-flex flex-row justify-content-center">
+        Access Denied!, please log in{" "}
+      </h1>
+    );
   }
   const GiftList = () =>
     registryData.map((registry, i) => (
@@ -21,7 +25,6 @@ const Portfolio = () => {
         text={registry.text}
       />
     ));
-
 
   return (
     <section className="portfolio">
