@@ -1,7 +1,10 @@
 import AboutUs from "../../components/AboutUs";
 import PageHeader from "../../components/PageHeader";
 import auth from "../../utils/auth";
+
 const About = ({ name, location, brand, email, availability }) => {
+
+  //auth if user is not logged in they will not be able to view this page
   if (!auth.loggedIn()) {
     return (
       <h1 className="d-flex flex-row justify-content-center">
@@ -10,6 +13,7 @@ const About = ({ name, location, brand, email, availability }) => {
     );
   }
 
+  //else return AboutMe and PageHeader components in browser to use
   return (
     <section className="about">
       <PageHeader
