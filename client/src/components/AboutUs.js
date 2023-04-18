@@ -5,12 +5,12 @@ import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
 import invitation from "../pages/about/Wedding-Invitation.pdf";
 
-
-
-
-const AboutMe = ({ name, email, location, availability, brand}) => {
+//function to bring in couple info and make components
+const AboutUs = ({ name, email, location, availability, brand}) => {
+  //animation
   const [ref, inView] = useInView({
     threshold: 0.2,
+    
     triggerOnce: true,
   });
 
@@ -20,6 +20,7 @@ const AboutMe = ({ name, email, location, availability, brand}) => {
     setDownloading(false);
   }, [downloading]);
 
+  //function for downloading invitation PDF
   const handleDownload = () => {
     setDownloading(true);
     const link = document.createElement("a");
@@ -32,7 +33,7 @@ const AboutMe = ({ name, email, location, availability, brand}) => {
     document.body.appendChild(link);
     link.click();
   };
-
+//display image of couple and text about couple 
   return (
     <div className="aboutContainer container">
       <div className="row">
@@ -94,4 +95,4 @@ const AboutMe = ({ name, email, location, availability, brand}) => {
   );
 };
 
-export default AboutMe;
+export default AboutUs;
