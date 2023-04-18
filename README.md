@@ -126,9 +126,16 @@ npm run develop
 
 ## Mock Up
 
-You can access the walkthrought video on Google Drive at
+You can access the walkthrough video on Google Drive at: https://drive.google.com/file/d/1F44mhmjWhUVxhYdO4xxtvwDVVKX4Xdxo/view?usp=sharing
 
 ![Screenshot of Landing page](./assets/hitched.PNG)
+![Screenshot of RSVP page](./assets/RSVP.PNG)
+![Screenshot of About page](./assets/about.PNG)
+![Screenshot of Registry page](./assets/registry.PNG)
+![Screenshot of Reception page](./assets/reception.PNG)
+![Screenshot of Social page](./assets/social.PNG)
+![Screenshot of Dashboard page](./assets/dashboard.PNG)
+
 
 
 
