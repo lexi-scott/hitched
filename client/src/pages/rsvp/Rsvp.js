@@ -11,7 +11,6 @@ const Rsvp = () => {
 
   const userData = data?.me || {};
 
-  console.log("RSVP...", userData);
   if (!auth.loggedIn()) {
     return (
       <h1 className="d-flex flex-row justify-content-center">
