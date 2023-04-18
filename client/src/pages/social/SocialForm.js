@@ -15,9 +15,6 @@ export default function SocialForm() {
   const handleShow = () => setShow(true);
 
   //MUTATION FOR ADDING POST
-  // const [addPost, { error, data }] = useMutation(ADD_POST);
-
-  //TESTING
   const [addPost, { error, data }] = useMutation(ADD_POST, {
     update(cache, { data: { addPost } }) {
       try {
@@ -48,7 +45,7 @@ export default function SocialForm() {
     }
 
     const { value } = e.target;
-    ///REPLACE POST AUTHOR ONCE LOG IN AUTHENTICATION IS SET UP
+    //this will take the author and the content
     setFormPost({
       ...formPost,
       postAuthor: auth.getProfile().data.username,
@@ -65,7 +62,7 @@ export default function SocialForm() {
       const { data } = await addPost({
         variables: { ...formPost, image: uploadImage },
       });
-      // window.location.replace("/social");
+      //close the modal
       handleClose();
     } catch (err) {
       console.error(err);

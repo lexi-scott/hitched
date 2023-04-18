@@ -6,11 +6,6 @@ import { QUERY_POSTS } from "../../utils/queries";
 import { useState } from "react";
 import auth from "../../utils/auth";
 export function AddComment({ postId }) {
-  console.log(postId)
-  // REPLACE WHEN AUTH LOG IN IS AVAILABLE
-
-  // const tempUser = "TEMPUSER";
-
   const [commentForm, setCommentForm] = useState({
     commentAuthor: "",
     commentText: "",
@@ -45,8 +40,8 @@ export function AddComment({ postId }) {
       return false;
     }
 
-    if (commentForm.commentText === '') {
-      return
+    if (commentForm.commentText === "") {
+      return;
     }
 
     try {
@@ -56,15 +51,13 @@ export function AddComment({ postId }) {
           commentAuthor: auth.getProfile().data.username,
         },
       });
-
     } catch (err) {
       console.error(err);
     }
     setCommentForm({
       ...commentForm,
-      commentText: ""
-    })
-
+      commentText: "",
+    });
   };
 
   return (
